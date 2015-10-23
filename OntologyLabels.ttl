@@ -1,0 +1,3478 @@
+@prefix	:		<http://group10.com/ontology#> .
+@prefix	dbo:	<http://dbpedia.org/ontology/> .
+@prefix dbr:	<http://dbpedia.org/resources/>	.
+@prefix	rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix	rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix	owl:	<http://www.w3.org/2002/07/owl#> .
+@prefix	xsd:	<http://www.w3.org/2001/XMLSchema#> .
+@prefix	prl:	<http://purl.obolibrary.org/obo/mfoem.owl> .
+
+dbo:Artist rdf:type owl:Class;
+			rdfs:subClassOf dbo:Agent.
+dbo:Album rdf:type owl:Class;
+			owl:equivalentClass :Album;
+			rdfs:subClassOf dbo:MusicalWork.
+dbo:Genre rdf:type owl:Class;
+			owl:equivalentClass :Genre;
+			rdfs:subClassOf dbo:MusicGenre.
+
+
+
+:Artist rdf:type owl:Class;
+		owl:equivalentClass dbo:Artist.
+:Album rdf:type owl:Class.
+:Genre rdf:type owl:Class.
+:Moods rdf:type owl:Class. 
+:Cases rdf:type owl:Class.
+
+dbo:genre rdf:type owl:ObjectProperty;
+			owl:inverseOf :hasGenre.
+:hasGenre rdf:type owl:ObjectProperty.
+dbo:artist rdf:type owl:ObjectProperty;
+			owl:inverseOf :hasArtist.
+:worksFor rdf:type owl:ObjectProperty;
+			rdfs:domain :Genre;
+			rdfs:range :Cases.
+:containsMood rdf:type owl:ObjectProperty;
+			rdfs:domain :Cases;
+			rdfs:range :Moods;
+			owl:inverseOf :containedIn.
+:containedIn rdf:type owl:ObjectProperty;
+			rdfs:domain :Moods;
+			rdfs:range :Cases.
+:isTreatmentFor rdf:type owl:ObjectProperty;
+			owl:inverseOf :hasTreatment;
+			rdfs:domain :Album;
+			rdfs:range :Cases;
+			owl:propertyChainAxiom (dbo:genre :worksFor).
+:hasTreatment rdf:type owl:ObjectProperty;
+			rdfs:domain :Cases;
+			rdfs:range :Album.
+			
+			
+<http://group10.com/ontology#anger_to_happiness> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#anger_to_pride> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#boredom_to_amusement> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#dissapointment_to_hope> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#fear_to_hope> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#jealousy_to_interest> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#saddness_to_happiness> rdf:type :Cases,
+														owl:NamedIndividual.
+<http://group10.com/ontology#shame_to_pride> rdf:type :Cases,
+														owl:NamedIndividual.
+														
+
+														
+														
+														#Imported from DBpedia
+														
+														
+dbr:Breakbeat	rdf:type	dbo:Genre .
+dbr:Breakbeat	rdfs:label	"Breakbeat"@en .
+dbr:Country_rock	rdf:type	dbo:Genre ;
+	rdfs:label	"Country rock"@en ;
+					:worksFor <http://group10.com/ontology#anger_to_happiness>.
+dbr:Mark_Heard	rdf:type	dbo:Artist ;
+	rdfs:label	"Mark Heard"@en .
+dbr:Modal_jazz	rdf:type	dbo:Genre ;
+	rdfs:label	"Modal jazz"@en ;
+					:worksFor <http://group10.com/ontology#anger_to_pride>.
+dbr:Post-rock	rdf:type	dbo:Genre ;
+	rdfs:label	"Post-rock"@en ;
+								:worksFor <http://group10.com/ontology#fear_to_hope>.
+<http://dbpedia.org/resource/A_Hard_Day\u0027s_Night_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"A Hard Day's Night (album)"@en ;
+	dbo:artist	dbr:George_Martin ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:Boys_for_Pele	rdf:type	dbo:Album ;
+	rdfs:label	"Boys for Pele"@en ;
+	dbo:artist	dbr:Tori_Amos ;
+	dbo:genre	dbr:Experimental_music ,
+		dbr:Baroque_pop ,
+		dbr:Alternative_rock .
+dbr:Canticle_of_the_Plains	rdf:type	dbo:Album ;
+	rdfs:label	"Canticle of the Plains"@en ;
+	dbo:artist	dbr:Rich_Mullins ;
+	dbo:genre	dbr:Contemporary_Christian_music .
+dbr:Christian_rock	rdf:type	dbo:Genre ;
+	rdfs:label	"Christian rock"@en ;
+					:worksFor <http://group10.com/ontology#dissapointment_to_hope>.
+<http://dbpedia.org/resource/Greetings_from_Asbury_Park,_N.J.>	rdf:type	dbo:Album ;
+	rdfs:label	"Greetings from Asbury Park, N.J."@en ;
+	dbo:artist	dbr:Bruce_Springsteen ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Help!_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Help! (album)"@en ;
+	dbo:artist	dbr:Ken_Thorne ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Rock_music ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/Scarlet\u0027s_Walk>	rdf:type	dbo:Album ;
+	rdfs:label	"Scarlet's Walk"@en ;
+	dbo:artist	dbr:Tori_Amos ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Baroque_pop .
+dbr:Strange_Little_Girls	rdf:type	dbo:Album ;
+	rdfs:label	"Strange Little Girls"@en ;
+	dbo:artist	dbr:Tori_Amos ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Baroque_pop .
+<http://dbpedia.org/resource/The_Wild,_the_Innocent_&_the_E_Street_Shuffle>	rdf:type	dbo:Album ;
+	rdfs:label	"The Wild, the Innocent & the E Street Shuffle"@en ;
+	dbo:artist	dbr:Bruce_Springsteen ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Rock_and_roll .
+<http://dbpedia.org/resource/A_(Cass_McCombs_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"A (Cass McCombs album)"@en ;
+	dbo:artist	dbr:Cass_McCombs ;
+	dbo:genre	dbr:Rock_music .
+dbr:Elin_Lanto	rdf:type	dbo:Artist ;
+	rdfs:label	"Elin Lanto"@en .
+dbr:In_a_Gospel_Way	rdf:type	dbo:Album ;
+	rdfs:label	"In a Gospel Way"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Gospel_music .
+<http://dbpedia.org/resource/Ray_Lynch:_Best_Of,_Volume_One>	rdf:type	dbo:Album ;
+	rdfs:label	"Ray Lynch: Best Of, Volume One"@en ;
+	dbo:artist	dbr:Ray_Lynch ;
+	dbo:genre	dbr:New-age_music .
+<http://dbpedia.org/resource/10_Years_(Armin_van_Buuren_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"10 Years (Armin van Buuren album)"@en ;
+	dbo:artist	dbr:Armin_van_Buuren ;
+	dbo:genre	<http://dbpedia.org/resource/Trance_(music_genre)> .
+<http://dbpedia.org/resource/12-String_Blues>	rdf:type	dbo:Album ;
+	rdfs:label	"12-String Blues"@en ;
+	dbo:artist	dbr:Leo_Kottke ;
+	dbo:genre	dbr:Blues .
+<http://dbpedia.org/resource/16_Biggest_Hits_(George_Jones_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"16 Biggest Hits (George Jones album)"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/A_King_&_Two_Queens>	rdf:type	dbo:Album ;
+	rdfs:label	"A King & Two Queens"@en ;
+	dbo:artist	dbr:Melba_Montgomery ,
+		dbr:George_Jones ,
+		dbr:Judy_Lynn ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/A_Map_of_the_World_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"A Map of the World (album)"@en ;
+	dbo:artist	dbr:Pat_Metheny ;
+	dbo:genre	dbr:Jazz_fusion .
+<http://dbpedia.org/resource/A_Taste_of_Yesterday\u0027s_Wine>	rdf:type	dbo:Album ;
+	rdfs:label	"A Taste of Yesterday's Wine"@en ;
+	dbo:artist	dbr:George_Jones ,
+		dbr:Merle_Haggard ;
+	dbo:genre	dbr:Country_music .
+dbr:Aaron_Yan	rdf:type	dbo:Artist ;
+	rdfs:label	"Aaron Yan"@en .
+<http://dbpedia.org/resource/Alexander_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"Alexander (soundtrack)"@en ;
+	dbo:artist	dbr:Vangelis ;
+	dbo:genre	dbr:Film_score .
+dbr:Alice_Cooper_and_Friends	rdf:type	dbo:Album ;
+	rdfs:label	"Alice Cooper and Friends"@en ;
+	dbo:artist	dbr:Alice_Cooper ;
+	dbo:genre	dbr:Heavy_metal_music ,
+		dbr:Hard_rock .
+dbr:All_My_Girls	rdf:type	dbo:Album ;
+	rdfs:label	"All My Girls"@en ;
+	dbo:artist	<http://dbpedia.org/resource/May_J.> ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:An_Other_Cup	rdf:type	dbo:Album ;
+	rdfs:label	"An Other Cup"@en ;
+	dbo:artist	dbr:Cat_Stevens ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Anthology_(Bruce_Dickinson_video)>	rdf:type	dbo:Album ;
+	rdfs:label	"Anthology (Bruce Dickinson video)"@en ;
+	dbo:artist	dbr:Bruce_Dickinson ;
+	dbo:genre	dbr:Heavy_metal_music .
+dbr:Ashtray_Rock	rdf:type	dbo:Album ;
+	rdfs:label	"Ashtray Rock"@en ;
+	dbo:artist	dbr:Joel_Plaskett ;
+	dbo:genre	dbr:Indie_rock .
+dbr:Au_nom_des_rois	rdf:type	dbo:Album ;
+	rdfs:label	"Au nom des rois"@en ;
+	dbo:artist	dbr:Jeanne_Mas ;
+	dbo:genre	dbr:Pop_music .
+dbr:Axle_Whitehead	rdf:type	dbo:Artist ;
+	rdfs:label	"Axle Whitehead"@en .
+<http://dbpedia.org/resource/Back_for_More_(Natalia_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Back for More (Natalia album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Natalia_(Belgian_singer)> ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Back_on_My_B.S.>	rdf:type	dbo:Album ;
+	rdfs:label	"Back on My B.S."@en ;
+	dbo:artist	dbr:Busta_Rhymes ;
+	dbo:genre	dbr:Hardcore_hip_hop ,
+		dbr:Hip_hop_music ,
+		dbr:East_Coast_hip_hop .
+
+<http://dbpedia.org/resource/Based_on_a_True_Story_(Paddy_Milner_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Based on a True Story (Paddy Milner album)"@en ;
+	dbo:artist	dbr:Paddy_Milner ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Pop_music ,
+		dbr:Blues .
+dbr:Benny_Ibarra	rdf:type	dbo:Artist ;
+	rdfs:label	"Benny Ibarra"@en .
+dbr:Benoit_Pioulard	rdf:type	dbo:Artist ;
+	rdfs:label	"Benoit Pioulard"@en .
+dbr:Born_in_Captivity	rdf:type	dbo:Album ;
+	rdfs:label	"Born in Captivity"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Progressive_folk ,
+		dbr:Folk_rock .
+dbr:Born_in_Captivity_II	rdf:type	dbo:Album ;
+	rdfs:label	"Born in Captivity II"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Bullet_(Mat_Kearney_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Bullet (Mat Kearney album)"@en ;
+	dbo:artist	dbr:Mat_Kearney ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Contemporary_Christian_music ,
+		dbr:Pop_music ,
+		dbr:Rock_music .
+dbr:Buon_Sangue	rdf:type	dbo:Album ;
+	rdfs:label	"Buon Sangue"@en ;
+	dbo:artist	dbr:Jovanotti ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Pop_music ,
+		dbr:Rhythm_and_blues .
+dbr:Cathedral_Oceans	rdf:type	dbo:Album ;
+	rdfs:label	"Cathedral Oceans"@en ;
+	dbo:artist	dbr:John_Foxx ;
+	dbo:genre	dbr:Ambient_music .
+dbr:Chameleon_in_the_Shadow_of_the_Night	rdf:type	dbo:Album ;
+	rdfs:label	"Chameleon in the Shadow of the Night"@en ;
+	dbo:artist	dbr:Peter_Hammill ;
+	dbo:genre	dbr:Progressive_rock ,
+		dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Charlie_Hall_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Charlie Hall (musician)"@en .
+<http://dbpedia.org/resource/Chrysalis_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Chrysalis (album)"@en ;
+	dbo:artist	dbr:Anggun ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Pop_music .
+dbr:Collie_Buddz	rdf:type	dbo:Artist ;
+	rdfs:label	"Collie Buddz"@en .
+dbr:Colores_Santos	rdf:type	dbo:Album ;
+	rdfs:label	"Colores Santos"@en ;
+	dbo:artist	dbr:Gustavo_Cerati ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Neo-psychedelia ,
+		dbr:Dream_pop .
+dbr:Comfort_Woman	rdf:type	dbo:Album ;
+	rdfs:label	"Comfort Woman"@en ;
+	dbo:artist	dbr:Meshell_Ndegeocello ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Neo_soul ,
+		dbr:Quiet_storm .
+dbr:Cutie_Bunny	rdf:type	dbo:Album ;
+	rdfs:label	"Cutie Bunny"@en ;
+	dbo:artist	dbr:Nana_Kitade ;
+	dbo:genre	dbr:Rock_music .
+dbr:Dan_the_Automator_Presents_2K7	rdf:type	dbo:Album ;
+	rdfs:label	"Dan the Automator Presents 2K7"@en ;
+	dbo:artist	dbr:Dan_the_Automator ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Dare_to_Dream_(Yanni_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Dare to Dream (Yanni album)"@en ;
+	dbo:artist	dbr:Yanni ;
+	dbo:genre	dbr:New-age_music .
+<http://dbpedia.org/resource/Dig_It_(Klaus_Schulze_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Dig It (Klaus Schulze album)"@en ;
+	dbo:artist	dbr:Klaus_Schulze ;
+	dbo:genre	dbr:Berlin_School_of_electronic_music ,
+		<http://dbpedia.org/resource/Trance_(music_genre)> .
+dbr:Dmitry_Koldun	rdf:type	dbo:Artist ;
+	rdfs:label	"Dmitry Koldun"@en .
+dbr:Dog_House_Music	rdf:type	dbo:Album ;
+	rdfs:label	"Dog House Music"@en ;
+	dbo:artist	dbr:Seasick_Steve ;
+	dbo:genre	dbr:Blues .
+dbr:Doorie	rdf:type	dbo:Album ;
+	rdfs:label	"Doorie"@en ;
+	dbo:artist	dbr:Atif_Aslam ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/En=Trance>	rdf:type	dbo:Album ;
+	rdfs:label	"En=Trance"@en ;
+	dbo:artist	dbr:Klaus_Schulze ;
+	dbo:genre	<http://dbpedia.org/resource/Trance_(music_genre)> .
+<http://dbpedia.org/resource/Everything_and_More_(Natalia_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Everything and More (Natalia album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Natalia_(Belgian_singer)> ;
+	dbo:genre	dbr:Pop_music .
+dbr:Eye_of_the_Hunter	rdf:type	dbo:Album ;
+	rdfs:label	"Eye of the Hunter"@en ;
+	dbo:artist	dbr:Brendan_Perry ;
+	dbo:genre	dbr:Dream_pop ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/Falling_from_Grace_(EP)>	rdf:type	dbo:Album ;
+	rdfs:label	"Falling from Grace (EP)"@en ;
+	dbo:artist	dbr:Isobel_Campbell ;
+	dbo:genre	dbr:Indie_pop .
+<http://dbpedia.org/resource/Fantasia_(Fantasia_Barrino_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Fantasia (Fantasia Barrino album)"@en ;
+	dbo:artist	dbr:Fantasia_Barrino ;
+	dbo:genre	dbr:Funk ,
+		dbr:Soul_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/First_Kiss_(Aya_Matsuura_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"First Kiss (Aya Matsuura album)"@en ;
+	dbo:artist	dbr:Aya_Matsuura ;
+	dbo:genre	dbr:J-pop .
+dbr:Flesh_Caffeine	rdf:type	dbo:Album ;
+	rdfs:label	"Flesh Caffeine"@en ;
+	dbo:artist	dbr:John_Christ ;
+	dbo:genre	dbr:Heavy_metal_music .
+<http://dbpedia.org/resource/Freedom\u0027s_Road>	rdf:type	dbo:Album ;
+	rdfs:label	"Freedom's Road"@en ;
+	dbo:artist	dbr:John_Mellencamp ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Country_rock .
+<http://dbpedia.org/resource/George_&_Tammy_&_Tina>	rdf:type	dbo:Album ;
+	rdfs:label	"George & Tammy & Tina"@en ;
+	dbo:artist	dbr:George_Jones ,
+		dbr:Tammy_Wynette ;
+	dbo:genre	dbr:Country_music .
+dbr:Ghost_of_Yesterday	rdf:type	dbo:Album ;
+	rdfs:label	"Ghost of Yesterday"@en ;
+	dbo:artist	dbr:Bill_Wells ;
+	dbo:genre	dbr:Indie_pop .
+<http://dbpedia.org/resource/Greatest_Hits_(Chris_Gaines_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greatest Hits (Chris Gaines album)"@en ;
+	dbo:artist	dbr:Garth_Brooks ;
+	dbo:genre	dbr:Country_pop ,
+		dbr:Alternative_rock ,
+		dbr:Country_rock .
+<http://dbpedia.org/resource/Greatest_Hits_(Paula_Abdul_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greatest Hits (Paula Abdul album)"@en ;
+	dbo:artist	dbr:Paula_Abdul ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Pop_music .
+dbr:Hear_the_Masses	rdf:type	dbo:Album ;
+	rdfs:label	"Hear the Masses"@en ;
+	dbo:artist	dbr:Bradley_Joseph ;
+	dbo:genre	dbr:Smooth_jazz ,
+		dbr:Instrumental_rock .
+<http://dbpedia.org/resource/High_Life_(Wayne_Shorter_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"High Life (Wayne Shorter album)"@en ;
+	dbo:artist	dbr:Wayne_Shorter ;
+	dbo:genre	dbr:Post-bop ,
+		dbr:Modal_jazz .
+dbr:Hip_Hop_Lives	rdf:type	dbo:Album ;
+	rdfs:label	"Hip Hop Lives"@en ;
+	dbo:artist	dbr:KRS-One ;
+	dbo:genre	dbr:East_Coast_hip_hop ,
+		dbr:Hardcore_hip_hop .
+dbr:Homecoming_in_Heaven	rdf:type	dbo:Album ;
+	rdfs:label	"Homecoming in Heaven"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Gospel_music .
+<http://dbpedia.org/resource/Hospitality_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Hospitality (album)"@en ;
+	dbo:artist	dbr:Venetian_Snares ;
+	dbo:genre	dbr:Breakcore .
+dbr:Hubert_Laws	rdf:type	dbo:Artist ;
+	rdfs:label	"Hubert Laws"@en .
+<http://dbpedia.org/resource/I\u0027ll_Sleep_When_You\u0027re_Dead>	rdf:type	dbo:Album ;
+	rdfs:label	"I'll Sleep When You're Dead"@en ;
+	dbo:artist	dbr:El-P ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Industrial_hip_hop .
+<http://dbpedia.org/resource/I_Need_an_Angel_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"I Need an Angel (album)"@en ;
+	dbo:artist	dbr:Ruben_Studdard ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Gospel_music ,
+		dbr:Contemporary_Christian_music ,
+		dbr:Pop_music .
+dbr:I_Never_Said_Goodbye	rdf:type	dbo:Album ;
+	rdfs:label	"I Never Said Goodbye"@en ;
+	dbo:artist	dbr:Sammy_Hagar ;
+	dbo:genre	dbr:Hard_rock .
+dbr:I_Scream	rdf:type	dbo:Album ;
+	rdfs:label	"I Scream"@en ;
+	dbo:artist	dbr:Nana_Kitade ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Punk_rock ,
+		dbr:Rock_music .
+dbr:Iconiq	rdf:type	dbo:Artist ;
+	rdfs:label	"Iconiq"@en .
+<http://dbpedia.org/resource/Indiana_(Jon_McLaughlin_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Indiana (Jon McLaughlin album)"@en ;
+	dbo:artist	dbr:Jon_McLaughlin ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Indianola_Mississippi_Seeds	rdf:type	dbo:Album ;
+	rdfs:label	"Indianola Mississippi Seeds"@en ;
+	dbo:artist	<http://dbpedia.org/resource/B.B._King> ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Pop_music ,
+		dbr:Rock_music ,
+		dbr:Rhythm_and_blues ,
+		dbr:Blues .
+dbr:Indie_Rock_Blues	rdf:type	dbo:Album ;
+	rdfs:label	"Indie Rock Blues"@en ;
+	dbo:artist	dbr:Joe_Beats ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Inter*Face>	rdf:type	dbo:Album ;
+	rdfs:label	"Inter*Face"@en ;
+	dbo:artist	dbr:Klaus_Schulze ;
+	dbo:genre	<http://dbpedia.org/resource/Trance_(music_genre)> ,
+		dbr:Space_disco .
+<http://dbpedia.org/resource/Into_White_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Into White (album)"@en ;
+	dbo:artist	dbr:Carly_Simon ;
+	dbo:genre	dbr:Traditional_pop_music .
+<http://dbpedia.org/resource/It\u0027s_Like_This>	rdf:type	dbo:Album ;
+	rdfs:label	"It's Like This"@en ;
+	dbo:artist	dbr:Rickie_Lee_Jones ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music .
+dbr:Jean-Luc_Ponty_Experience_with_the_George_Duke_Trio	rdf:type	dbo:Album ;
+	rdfs:label	"Jean-Luc Ponty Experience with the George Duke Trio"@en ;
+	dbo:artist	dbr:Jean-Luc_Ponty ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Jeanne_Mas_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Jeanne Mas (album)"@en ;
+	dbo:artist	dbr:Jeanne_Mas ;
+	dbo:genre	dbr:Electropop .
+dbr:Joe_Beats	rdf:type	dbo:Artist ;
+	rdfs:label	"Joe Beats"@en .
+dbr:Jon_McLaughlin	rdf:type	dbo:Artist ;
+	rdfs:label	"Jon McLaughlin"@en .
+dbr:Kiske	rdf:type	dbo:Album ;
+	rdfs:label	"Kiske"@en ;
+	dbo:artist	dbr:Michael_Kiske ;
+	dbo:genre	dbr:Acoustic_music ,
+		dbr:Rock_music ,
+		dbr:Pop_rock .
+dbr:Kurious	rdf:type	dbo:Artist ;
+	rdfs:label	"Kurious"@en .
+<http://dbpedia.org/resource/Ladies\u0027_Choice_(George_Jones_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Ladies' Choice (George Jones album)"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Last_of_the_Breed_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Last of the Breed (album)"@en ;
+	dbo:artist	dbr:Merle_Haggard ,
+		<http://dbpedia.org/resource/Ray_Price_(musician)> ,
+		dbr:Willie_Nelson ;
+	dbo:genre	dbr:Country_music .
+dbr:Liam_Hayes	rdf:type	dbo:Artist ;
+	rdfs:label	"Liam Hayes"@en .
+dbr:Life_in_Cartoon_Motion	rdf:type	dbo:Album ;
+	rdfs:label	"Life in Cartoon Motion"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Mika_(singer)> ;
+	dbo:genre	dbr:Power_pop ,
+		dbr:Pop_rock ,
+		dbr:Glam_rock .
+<http://dbpedia.org/resource/Lil\u0027_Chris>	rdf:type	dbo:Artist ;
+	rdfs:label	"Lil' Chris"@en .
+<http://dbpedia.org/resource/Lil\u0027_Chris_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Lil' Chris (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Lil\u0027_Chris> ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Pop_music .
+dbr:Little_Drummer_Boy_Live	rdf:type	dbo:Album ;
+	rdfs:label	"Little Drummer Boy Live"@en ;
+	dbo:artist	dbr:Mark_Kozelek ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Live_@_KlangArt>	rdf:type	dbo:Album ;
+	rdfs:label	"Live @ KlangArt"@en ;
+	dbo:artist	dbr:Klaus_Schulze ;
+	dbo:genre	<http://dbpedia.org/resource/Trance_(music_genre)> .
+dbr:Live_at_Massey_Hall_1971	rdf:type	dbo:Album ;
+	rdfs:label	"Live at Massey Hall 1971"@en ;
+	dbo:artist	dbr:Neil_Young ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Lorena_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Lorena (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Lorena_(singer)> ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Lorena_(singer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Lorena (singer)"@en .
+<http://dbpedia.org/resource/Low_on_Ice_(The_Iceland_Sessions)>	rdf:type	dbo:Album ;
+	rdfs:label	"Low on Ice (The Iceland Sessions)"@en ;
+	dbo:artist	dbr:Alec_Empire ;
+	dbo:genre	dbr:Experimental_music .
+<http://dbpedia.org/resource/Made_in_Twenty_(20)>	rdf:type	dbo:Album ;
+	rdfs:label	"Made in Twenty (20)"@en ;
+	dbo:artist	dbr:BoA ;
+	dbo:genre	dbr:Pop_music .
+dbr:Making_Orange_Things	rdf:type	dbo:Album ;
+	rdfs:label	"Making Orange Things"@en ;
+	dbo:artist	dbr:Venetian_Snares ;
+	dbo:genre	dbr:Noise_music .
+dbr:Mama_Lilla_Would	rdf:type	dbo:Album ;
+	rdfs:label	"Mama Lilla Would"@en ;
+	dbo:artist	dbr:Vanessa_Petruo ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Blue-eyed_soul ,
+		dbr:Funk ,
+		dbr:Baroque_pop .
+dbr:Manic_Expressive	rdf:type	dbo:Album ;
+	rdfs:label	"Manic Expressive"@en ;
+	dbo:artist	dbr:Her_Space_Holiday ;
+	dbo:genre	dbr:Independent_music .
+dbr:Matisyahu	rdf:type	dbo:Artist ;
+	rdfs:label	"Matisyahu"@en .
+dbr:Mauro_Scocco	rdf:type	dbo:Artist ;
+	rdfs:label	"Mauro Scocco"@en .
+<http://dbpedia.org/resource/May_J.>	rdf:type	dbo:Artist ;
+	rdfs:label	"May J."@en .
+dbr:Melba_Montgomery	rdf:type	dbo:Artist ;
+	rdfs:label	"Melba Montgomery"@en .
+<http://dbpedia.org/resource/Mika_(singer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Mika (singer)"@en .
+dbr:Music_of_Final_Fantasy_VIII	rdf:type	dbo:Album ;
+	rdfs:label	"Music of Final Fantasy VIII"@en ;
+	dbo:artist	dbr:Nobuo_Uematsu ;
+	dbo:genre	dbr:Ambient_music ,
+		dbr:Pop_music ,
+		dbr:Video_game_music ,
+		dbr:Breakbeat ,
+		dbr:Techno ,
+		dbr:Synthpop ,
+		dbr:Nu_jazz .
+dbr:Music_of_Final_Fantasy_X-2	rdf:type	dbo:Album ;
+	rdfs:label	"Music of Final Fantasy X-2"@en ;
+	dbo:artist	dbr:Takahito_Eguchi ,
+		dbr:Noriko_Matsueda ;
+	dbo:genre	dbr:J-pop ,
+		dbr:Ambient_music ,
+		dbr:Pop_music ,
+		dbr:Video_game_music ,
+		dbr:Breakbeat .
+dbr:Music_of_the_Final_Fantasy_Tactics_series	rdf:type	dbo:Album ;
+	rdfs:label	"Music of the Final Fantasy Tactics series"@en ;
+	dbo:artist	dbr:Nobuo_Uematsu ,
+		dbr:Masaharu_Iwata ,
+		dbr:Hitoshi_Sakimoto ;
+	dbo:genre	dbr:Video_game_music .
+<http://dbpedia.org/resource/Nadir\u0027s_Big_Chance>	rdf:type	dbo:Album ;
+	rdfs:label	"Nadir's Big Chance"@en ;
+	dbo:artist	dbr:Peter_Hammill ;
+	dbo:genre	dbr:Art_rock ,
+		dbr:Garage_rock ,
+		dbr:Progressive_rock ,
+		dbr:Protopunk .
+<http://dbpedia.org/resource/Never_Trust_a_Hippy_(Adrian_Sherwood_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Never Trust a Hippy (Adrian Sherwood album)"@en ;
+	dbo:artist	dbr:Adrian_Sherwood ;
+	dbo:genre	<http://dbpedia.org/resource/Dub_(music)> ,
+		<http://dbpedia.org/resource/Electro_(music)> .
+dbr:New_Country_Hits	rdf:type	dbo:Album ;
+	rdfs:label	"New Country Hits"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+dbr:Ngonidzashe_Kambarami	rdf:type	dbo:Artist ;
+	rdfs:label	"Ngonidzashe Kambarami"@en .
+dbr:Nothing_Left_to_Lose	rdf:type	dbo:Album ;
+	rdfs:label	"Nothing Left to Lose"@en ;
+	dbo:artist	dbr:Mat_Kearney ;
+	dbo:genre	dbr:Acoustic_music ,
+		dbr:Rock_music ,
+		dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Oh,_My_NOLA>	rdf:type	dbo:Album ;
+	rdfs:label	"Oh, My NOLA"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Harry_Connick,_Jr.> ;
+	dbo:genre	dbr:Big_band .
+dbr:Old_Brush_Arbors	rdf:type	dbo:Album ;
+	rdfs:label	"Old Brush Arbors"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Gospel_music .
+dbr:One_Deep_Breath	rdf:type	dbo:Album ;
+	rdfs:label	"One Deep Breath"@en ;
+	dbo:artist	dbr:Bradley_Joseph ;
+	dbo:genre	dbr:New-age_music .
+<http://dbpedia.org/resource/Out_of_the_Woods_(Tracey_Thorn_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Out of the Woods (Tracey Thorn album)"@en ;
+	dbo:artist	dbr:Tracey_Thorn ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/PH7_(Peter_Hammill_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"PH7 (Peter Hammill album)"@en ;
+	dbo:artist	dbr:Peter_Hammill ;
+	dbo:genre	dbr:Progressive_rock ,
+		dbr:Art_rock .
+dbr:Paddy_Milner	rdf:type	dbo:Artist ;
+	rdfs:label	"Paddy Milner"@en .
+dbr:Philosophy_of_Miracle	rdf:type	dbo:Album ;
+	rdfs:label	"Philosophy of Miracle"@en ;
+	dbo:artist	dbr:Vitas ;
+	dbo:genre	dbr:Progressive_rock ,
+		dbr:Alternative_rock .
+dbr:Red_Voodoo	rdf:type	dbo:Album ;
+	rdfs:label	"Red Voodoo"@en ;
+	dbo:artist	dbr:Sammy_Hagar ;
+	dbo:genre	dbr:Hard_rock .
+dbr:Remember_That_Night	rdf:type	dbo:Album ;
+	rdfs:label	"Remember That Night"@en ;
+	dbo:artist	dbr:David_Gilmour ;
+	dbo:genre	dbr:Progressive_rock .
+<http://dbpedia.org/resource/Rory_Gallagher_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Rory Gallagher (album)"@en ;
+	dbo:artist	dbr:Rory_Gallagher ;
+	dbo:genre	dbr:Blues ,
+		dbr:Jazz ,
+		dbr:Blues_rock .
+dbr:Rosso_Relativo	rdf:type	dbo:Album ;
+	rdfs:label	"Rosso Relativo"@en ;
+	dbo:artist	dbr:Tiziano_Ferro ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rhythm_and_blues .
+<http://dbpedia.org/resource/Sammy_Hagar_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Sammy Hagar (album)"@en ;
+	dbo:artist	dbr:Sammy_Hagar ;
+	dbo:genre	dbr:Hard_rock .
+<http://dbpedia.org/resource/Saw_III_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"Saw III (soundtrack)"@en ;
+	dbo:artist	dbr:Charlie_Clouser ;
+	dbo:genre	dbr:Alternative_metal ,
+		dbr:Heavy_metal_music ,
+		dbr:Metalcore .
+dbr:Seasick_Steve	rdf:type	dbo:Artist ;
+	rdfs:label	"Seasick Steve"@en .
+<http://dbpedia.org/resource/Secrets_(Allison_Crowe_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Secrets (Allison Crowe album)"@en ;
+	dbo:artist	dbr:Allison_Crowe ;
+	dbo:genre	dbr:Rock_music .
+dbr:See_You_as_I_Do	rdf:type	dbo:Album ;
+	rdfs:label	"See You as I Do"@en ;
+	dbo:artist	dbr:Trijntje_Oosterhuis ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Set_Me_Free_(Marion_Raven_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Set Me Free (Marion Raven album)"@en ;
+	dbo:artist	dbr:Marion_Raven ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Hard_rock ,
+		dbr:Alternative_rock .
+dbr:Shontelle	rdf:type	dbo:Artist ;
+	rdfs:label	"Shontelle"@en .
+<http://dbpedia.org/resource/Shy\u0027m>	rdf:type	dbo:Artist ;
+	rdfs:label	"Shy'm"@en .
+dbr:Sitting_Targets	rdf:type	dbo:Album ;
+	rdfs:label	"Sitting Targets"@en ;
+	dbo:artist	dbr:Peter_Hammill ;
+	dbo:genre	dbr:Art_rock .
+dbr:Songs_I_Wrote_and_Later_Recorded	rdf:type	dbo:Album ;
+	rdfs:label	"Songs I Wrote and Later Recorded"@en ;
+	dbo:artist	dbr:Jon_McLaughlin ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Space_Cowboy_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Space Cowboy (musician)"@en .
+<http://dbpedia.org/resource/Stage_Struck_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Stage Struck (album)"@en ;
+	dbo:artist	dbr:Rory_Gallagher ;
+	dbo:genre	dbr:Blues_rock ,
+		dbr:Hard_rock .
+<http://dbpedia.org/resource/Strange_Fruit_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Strange Fruit (album)"@en ;
+	dbo:artist	dbr:Trijntje_Oosterhuis ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Tattoo_(Rory_Gallagher_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Tattoo (Rory Gallagher album)"@en ;
+	dbo:artist	dbr:Rory_Gallagher ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Blues_rock ,
+		dbr:Blues .
+<http://dbpedia.org/resource/Taylor_Swift_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Taylor Swift (album)"@en ;
+	dbo:artist	dbr:Taylor_Swift ;
+	dbo:genre	dbr:Country_music .
+dbr:Ten_13	rdf:type	dbo:Album ;
+	rdfs:label	"Ten 13"@en ;
+	dbo:artist	dbr:Sammy_Hagar ;
+	dbo:genre	dbr:Hard_rock .
+dbr:The_Beauty_Around	rdf:type	dbo:Album ;
+	rdfs:label	"The Beauty Around"@en ;
+	dbo:artist	dbr:Marike_Jager ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Jazz .
+dbr:The_Gospel_Collection	rdf:type	dbo:Album ;
+	rdfs:label	"The Gospel Collection"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Gospel_music ,
+		dbr:Country_music .
+<http://dbpedia.org/resource/The_Grand_Tour_(George_Jones_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Grand Tour (George Jones album)"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/The_Great_Escape_(Ilse_DeLange_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Great Escape (Ilse DeLange album)"@en ;
+	dbo:artist	dbr:Ilse_DeLange ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Country_music ,
+		dbr:Pop_music .
+dbr:The_Ideal_Condition	rdf:type	dbo:Album ;
+	rdfs:label	"The Ideal Condition"@en ;
+	dbo:artist	dbr:Paul_Hartnoll ;
+	dbo:genre	dbr:Electronica .
+dbr:The_Light_That_Guides_You_Home	rdf:type	dbo:Album ;
+	rdfs:label	"The Light That Guides You Home"@en ;
+	dbo:artist	dbr:Jim_Cuddy ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Rock_music .
+
+dbr:The_Orchestral_Tubular_Bells	rdf:type	dbo:Album ;
+	rdfs:label	"The Orchestral Tubular Bells"@en ;
+	dbo:artist	dbr:Mike_Oldfield ;
+	dbo:genre	dbr:Symphonic_rock ,
+		dbr:Progressive_rock .
+dbr:The_Road_to_Escondido	rdf:type	dbo:Album ;
+	rdfs:label	"The Road to Escondido"@en ;
+	dbo:artist	dbr:JJ_Cale ,
+		dbr:Eric_Clapton ;
+	dbo:genre	dbr:Tulsa_Sound ,
+		dbr:Blues_rock ,
+		dbr:Blues .
+dbr:The_Sky_of_Mind	rdf:type	dbo:Album ;
+	rdfs:label	"The Sky of Mind"@en ;
+	dbo:artist	dbr:Ray_Lynch ;
+	dbo:genre	dbr:New-age_music .
+dbr:The_Songs_of_My_Mother	rdf:type	dbo:Album ;
+	rdfs:label	"The Songs of My Mother"@en ;
+	dbo:artist	dbr:Vitas ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/The_Undisputed_Truth_(Brother_Ali_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Undisputed Truth (Brother Ali album)"@en ;
+	dbo:artist	dbr:Brother_Ali ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:This_Little_Bird	rdf:type	dbo:Album ;
+	rdfs:label	"This Little Bird"@en ;
+	dbo:artist	dbr:Allison_Crowe ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/This_Time_(Natalia_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"This Time (Natalia album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Natalia_(Belgian_singer)> ;
+	dbo:genre	dbr:Pop_music .
+dbr:Three_Lock_Box	rdf:type	dbo:Album ;
+	rdfs:label	"Three Lock Box"@en ;
+	dbo:artist	dbr:Sammy_Hagar ;
+	dbo:genre	dbr:Hard_rock .
+dbr:Tidings	rdf:type	dbo:Album ;
+	rdfs:label	"Tidings"@en ;
+	dbo:artist	dbr:Allison_Crowe ;
+	dbo:genre	dbr:Rock_music .
+dbr:Tom_Brosseau	rdf:type	dbo:Artist ;
+	rdfs:label	"Tom Brosseau"@en .
+<http://dbpedia.org/resource/Tongues_(Kieran_Hebden_and_Steve_Reid_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Tongues (Kieran Hebden and Steve Reid album)"@en ;
+	dbo:artist	dbr:Steve_Reid ,
+		dbr:Four_Tet ;
+	dbo:genre	dbr:Jazz .
+dbr:Top_Priority	rdf:type	dbo:Album ;
+	rdfs:label	"Top Priority"@en ;
+	dbo:artist	dbr:Rory_Gallagher ;
+	dbo:genre	dbr:Blues_rock ,
+		dbr:Hard_rock .
+<http://dbpedia.org/resource/Trilogy_(ATB_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Trilogy (ATB album)"@en ;
+	dbo:artist	dbr:ATB ;
+	dbo:genre	dbr:Synthpop ,
+		dbr:Alternative_dance ,
+		<http://dbpedia.org/resource/Trance_(music_genre)> ,
+		dbr:Electronica .
+dbr:Trombone_Shorty	rdf:type	dbo:Artist ;
+	rdfs:label	"Trombone Shorty"@en .
+<http://dbpedia.org/resource/Turn_the_Page_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Turn the Page (album)"@en ;
+	dbo:artist	dbr:Waylon_Jennings ;
+	dbo:genre	dbr:Outlaw_country ,
+		dbr:Country_music .
+dbr:Twelve_project	rdf:type	dbo:Artist ;
+	rdfs:label	"Twelve project"@en .
+<http://dbpedia.org/resource/Unbelievable_(Sarah_Connor_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Unbelievable (Sarah Connor album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Sarah_Connor_(singer)> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Soul_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:Walls_Can_Fall	rdf:type	dbo:Album ;
+	rdfs:label	"Walls Can Fall"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/We_Found_Heaven_Right_Here_on_Earth_at_%224033%22>	rdf:type	dbo:Album ;
+	rdfs:label	"We Found Heaven Right Here on Earth at \"4033\""@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/What\u0027s_in_Our_Heart>	rdf:type	dbo:Album ;
+	rdfs:label	"What's in Our Heart"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Wisp_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Wisp (musician)"@en .
+dbr:Work_of_Heart	rdf:type	dbo:Album ;
+	rdfs:label	"Work of Heart"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Rock_music .
+dbr:Yoshinori_Sunahara	rdf:type	dbo:Artist ;
+	rdfs:label	"Yoshinori Sunahara"@en .
+<http://dbpedia.org/resource/You\u0027ve_Still_Got_a_Place_in_My_Heart>	rdf:type	dbo:Album ;
+	rdfs:label	"You've Still Got a Place in My Heart"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+dbr:Young_Noble	rdf:type	dbo:Artist ;
+	rdfs:label	"Young Noble"@en .
+<http://dbpedia.org/resource/Yuri_(Mexican_singer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Yuri (Mexican singer)"@en .
+dbr:Justin_Vernon	rdf:type	dbo:Artist ;
+	rdfs:label	"Justin Vernon"@en .
+<http://dbpedia.org/resource/Maximum_(Murat_Boz_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Maximum (Murat Boz album)"@en ;
+	dbo:artist	dbr:Murat_Boz ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Dance-pop ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/Randy_Jackson\u0027s_Music_Club,_Vol._1>	rdf:type	dbo:Album ;
+	rdfs:label	"Randy Jackson's Music Club, Vol. 1"@en ;
+	dbo:artist	dbr:Randy_Jackson ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Dance-pop ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/%22Happy%22_in_Galoshes>	rdf:type	dbo:Album ;
+	rdfs:label	"\"Happy\" in Galoshes"@en ;
+	dbo:artist	dbr:Scott_Weiland ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Neo-psychedelia .
+<http://dbpedia.org/resource/2_Paint_It_Gold>	rdf:type	dbo:Album ;
+	rdfs:label	"2 Paint It Gold"@en ;
+	dbo:artist	dbr:Maki_Goto ;
+	dbo:genre	dbr:J-pop .
+<http://dbpedia.org/resource/A_Letter_from_Death_Row_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"A Letter from Death Row (album)"@en ;
+	dbo:artist	dbr:Bret_Michaels ;
+	dbo:genre	dbr:Hard_rock .
+dbr:A_Thousand_Miles_Behind	rdf:type	dbo:Album ;
+	rdfs:label	"A Thousand Miles Behind"@en ;
+	dbo:artist	<http://dbpedia.org/resource/David_Gray_(musician)> ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Accident_Prone_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Accident Prone (album)"@en ;
+	dbo:artist	dbr:Ira_Losco ;
+	dbo:genre	dbr:Independent_music ,
+		dbr:Alternative_rock ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Aliens_&_Rainbows>	rdf:type	dbo:Album ;
+	rdfs:label	"Aliens & Rainbows"@en ;
+	dbo:artist	dbr:Ferras ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Alive_&_Kicking_(Nana_Mizuki_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Alive & Kicking (Nana Mizuki album)"@en ;
+	dbo:artist	dbr:Nana_Mizuki ;
+	dbo:genre	dbr:Soft_rock ,
+		dbr:Synthpop ,
+		dbr:J-pop .
+dbr:Amber_Kuo	rdf:type	dbo:Artist ;
+	rdfs:label	"Amber Kuo"@en .
+dbr:Ana_Hina	rdf:type	dbo:Album ;
+	rdfs:label	"Ana Hina"@en ;
+	dbo:artist	dbr:Natacha_Atlas ;
+	dbo:genre	dbr:World_music .
+dbr:Andre_Nickatina	rdf:type	dbo:Artist ;
+	rdfs:label	"Andre Nickatina"@en .
+<http://dbpedia.org/resource/Andrew_W.K.>	rdf:type	dbo:Artist ;
+	rdfs:label	"Andrew W.K."@en .
+dbr:Ante_Gia	rdf:type	dbo:Album ;
+	rdfs:label	"Ante Gia"@en ;
+	dbo:artist	dbr:Despina_Vandi ;
+	dbo:genre	dbr:Flamenco ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/Ballads,_Blues_&_Stories>	rdf:type	dbo:Album ;
+	rdfs:label	"Ballads, Blues & Stories"@en ;
+	dbo:artist	dbr:Bret_Michaels ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Blues_rock .
+dbr:BatBox	rdf:type	dbo:Album ;
+	rdfs:label	"BatBox"@en ;
+	dbo:artist	dbr:Miss_Kittin ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Electroclash .
+dbr:Betfakar_Fi_Eih	rdf:type	dbo:Album ;
+	rdfs:label	"Betfakar Fi Eih"@en ;
+	dbo:artist	dbr:Nancy_Ajram ;
+	dbo:genre	dbr:World_music .
+<http://dbpedia.org/resource/Bittersweet_Symphony_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Bittersweet Symphony (album)"@en ;
+	dbo:artist	dbr:Jade_Villalon ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Blends_&_Remixes_of_Someone_Else>	rdf:type	dbo:Album ;
+	rdfs:label	"Blends & Remixes of Someone Else"@en ;
+	dbo:artist	dbr:Ira_Losco ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Techno ,
+		dbr:House_music ,
+		dbr:Independent_music .
+dbr:Blutkind	rdf:type	dbo:Album ;
+	rdfs:label	"Blutkind"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Wumpscut:> ;
+	dbo:genre	dbr:Industrial_music .
+dbr:Brendan_James	rdf:type	dbo:Artist ;
+	rdfs:label	"Brendan James"@en .
+<http://dbpedia.org/resource/Carly_Simon:_Live_from_Martha\u0027s_Vineyard>	rdf:type	dbo:Album ;
+	rdfs:label	"Carly Simon: Live from Martha's Vineyard"@en ;
+	dbo:artist	dbr:Carly_Simon ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Cause_and_Effect_(Maria_Mena_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Cause and Effect (Maria Mena album)"@en ;
+	dbo:artist	dbr:Maria_Mena ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music .
+
+
+dbr:Come_Out_Fighting_Ghengis_Smith	rdf:type	dbo:Album ;
+	rdfs:label	"Come Out Fighting Ghengis Smith"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Progressive_folk ,
+		dbr:Folk_rock ,
+		dbr:Folk_baroque .
+dbr:Cupcakes_Taste_Like_Violence	rdf:type	dbo:Album ;
+	rdfs:label	"Cupcakes Taste Like Violence"@en ;
+	dbo:artist	dbr:Jeffree_Star ;
+	dbo:genre	dbr:Electropop .
+dbr:Dance_Love_Pop	rdf:type	dbo:Album ;
+	rdfs:label	"Dance Love Pop"@en ;
+	dbo:artist	dbr:Agnes_Carlsson ;
+	dbo:genre	dbr:Pop_music .
+dbr:De_Vampyrica_Philosophia	rdf:type	dbo:Album ;
+	rdfs:label	"De Vampyrica Philosophia"@en ;
+	dbo:artist	dbr:Alessandro_Nunziati ;
+	dbo:genre	dbr:Symphonic_black_metal .
+dbr:Descendants_of_Smith	rdf:type	dbo:Album ;
+	rdfs:label	"Descendants of Smith"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Rock_music .
+dbr:Detrimentalist	rdf:type	dbo:Album ;
+	rdfs:label	"Detrimentalist"@en ;
+	dbo:artist	dbr:Venetian_Snares ;
+	dbo:genre	dbr:Breakcore .
+
+<http://dbpedia.org/resource/Don\u0027t_Stay_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Don't Stay (album)"@en ;
+	dbo:artist	dbr:Nami_Tamaki ;
+	dbo:genre	dbr:J-pop ,
+		dbr:Pop_music ,
+		dbr:Dance-pop .
+<http://dbpedia.org/resource/Don\u0027t_Suppose>	rdf:type	dbo:Album ;
+	rdfs:label	"Don't Suppose"@en ;
+	dbo:artist	dbr:Limahl ;
+	dbo:genre	dbr:Synthpop ,
+		dbr:Pop_rock .
+dbr:Enjoy_the_Moment	rdf:type	dbo:Album ;
+	rdfs:label	"Enjoy the Moment"@en ;
+	dbo:artist	dbr:Randy_Napoleon ;
+	dbo:genre	dbr:Bebop ,
+		dbr:Jazz .
+<http://dbpedia.org/resource/Evolver_(John_Legend_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Evolver (John Legend album)"@en ;
+	dbo:artist	dbr:John_Legend ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Neo_soul .
+dbr:Feed_the_Animals	rdf:type	dbo:Album ;
+	rdfs:label	"Feed the Animals"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Girl_Talk_(musician)> ;
+	dbo:genre	<http://dbpedia.org/resource/Mashup_(music)> .
+dbr:Ferras	rdf:type	dbo:Artist ;
+	rdfs:label	"Ferras"@en .
+dbr:G-Dragon	rdf:type	dbo:Artist ;
+	rdfs:label	"G-Dragon"@en .
+<http://dbpedia.org/resource/G_Tom_Mac_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"G Tom Mac (album)"@en ;
+	dbo:artist	dbr:Gerard_McMahon ;
+	dbo:genre	dbr:Rock_music .
+dbr:Gaetana	rdf:type	dbo:Album ;
+	rdfs:label	"Gaetana"@en ;
+	dbo:artist	dbr:Giusy_Ferreri ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Pop_music ,
+		dbr:Blues .
+dbr:Garden_of_Uranium	rdf:type	dbo:Album ;
+	rdfs:label	"Garden of Uranium"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Ginger_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Ginger (musician)"@en .
+dbr:Giusy_Ferreri	rdf:type	dbo:Artist ;
+	rdfs:label	"Giusy Ferreri"@en .
+dbr:Glitter_4_Your_Soul	rdf:type	dbo:Album ;
+	rdfs:label	"Glitter 4 Your Soul"@en ;
+	dbo:artist	dbr:Rikki_Rockett ;
+	dbo:genre	dbr:Punk_rock ,
+		dbr:Hard_rock ,
+		dbr:Glam_rock .
+<http://dbpedia.org/resource/Greg_Lake_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greg Lake (album)"@en ;
+	dbo:artist	dbr:Greg_Lake ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Hard_rock .
+dbr:Hakai	rdf:type	dbo:Album ;
+	rdfs:label	"Hakai"@en ;
+	dbo:artist	dbr:Hiroshi_Kyono ;
+	dbo:genre	dbr:Digital_hardcore ,
+		dbr:Techno .
+dbr:Hipnoz	rdf:type	dbo:Album ;
+	rdfs:label	"Hipnoz"@en ;
+	dbo:artist	dbr:Hande_Yener ;
+	dbo:genre	<http://dbpedia.org/resource/Electro_(music)> ,
+		dbr:Pop_music .
+dbr:Homage_to_My_Heroes	rdf:type	dbo:Album ;
+	rdfs:label	"Homage to My Heroes"@en ;
+	dbo:artist	dbr:Mike_Garson ;
+	dbo:genre	dbr:New-age_music .
+dbr:Hope_in_Forgotten_Places	rdf:type	dbo:Album ;
+	rdfs:label	"Hope in Forgotten Places"@en ;
+	dbo:artist	dbr:Mike_Garson ;
+	dbo:genre	dbr:Electronica .
+dbr:Houston_We_Have_No_Problem	rdf:type	dbo:Album ;
+	rdfs:label	"Houston We Have No Problem"@en ;
+	dbo:artist	dbr:Twelve_project ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Experimental_music .
+<http://dbpedia.org/resource/If_Not_for_You_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"If Not for You (album)"@en ;
+	dbo:artist	dbr:Olivia_Newton-John ;
+	dbo:genre	dbr:Country_pop .
+<http://dbpedia.org/resource/Imagination\u0027s_Light>	rdf:type	dbo:Album ;
+	rdfs:label	"Imagination's Light"@en ;
+	dbo:artist	dbr:Kevin_Kern ;
+	dbo:genre	dbr:New-age_music .
+dbr:Imperial_Blaze	rdf:type	dbo:Album ;
+	rdfs:label	"Imperial Blaze"@en ;
+	dbo:artist	dbr:Sean_Paul ;
+	dbo:genre	dbr:Dancehall ,
+		dbr:Reggae ,
+		dbr:Reggae_fusion ,
+		dbr:Rhythm_and_blues .
+<http://dbpedia.org/resource/In_Person_Friday_and_Saturday_Nights_at_the_Blackhawk,_Complete>	rdf:type	dbo:Album ;
+	rdfs:label	"In Person Friday and Saturday Nights at the Blackhawk, Complete"@en ;
+	dbo:artist	dbr:Miles_Davis ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Post-bop ,
+		dbr:Hard_bop ,
+		dbr:Modal_jazz .
+<http://dbpedia.org/resource/Ipso_Facto_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Ipso Facto (album)"@en ;
+	dbo:artist	dbr:Rik_Emmett ;
+	dbo:genre	dbr:Rock_music .
+dbr:James_Blunt	rdf:type	dbo:Artist ;
+	rdfs:label	"James Blunt"@en .
+<http://dbpedia.org/resource/Jane_Wiedlin_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Jane Wiedlin (album)"@en ;
+	dbo:artist	dbr:Jane_Wiedlin ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:New_wave_music .
+dbr:Jay_R_Sillona	rdf:type	dbo:Artist ;
+	rdfs:label	"Jay R Sillona"@en .
+dbr:Jazmine_Sullivan	rdf:type	dbo:Artist ;
+	rdfs:label	"Jazmine Sullivan"@en .
+<http://dbpedia.org/resource/Jinx_(Rory_Gallagher_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Jinx (Rory Gallagher album)"@en ;
+	dbo:artist	dbr:Rory_Gallagher ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Blues_rock .
+dbr:Jon_Lajoie	rdf:type	dbo:Artist ;
+	rdfs:label	"Jon Lajoie"@en .
+<http://dbpedia.org/resource/Kerli_(EP)>	rdf:type	dbo:Album ;
+	rdfs:label	"Kerli (EP)"@en ;
+	dbo:artist	dbr:Kerli ;
+	dbo:genre	dbr:Nu_metal ,
+		dbr:Electropop .
+dbr:Kim_Hyun-joong	rdf:type	dbo:Artist ;
+	rdfs:label	"Kim Hyun-joong"@en .
+<http://dbpedia.org/resource/Koldun_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Koldun (album)"@en ;
+	dbo:artist	dbr:Dmitry_Koldun ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Rock_music .
+dbr:Krizz_Kaliko	rdf:type	dbo:Artist ;
+	rdfs:label	"Krizz Kaliko"@en .
+dbr:Larkin_Grimm	rdf:type	dbo:Artist ;
+	rdfs:label	"Larkin Grimm"@en .
+<http://dbpedia.org/resource/Lay_It_Down_(Al_Green_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Lay It Down (Al Green album)"@en ;
+	dbo:artist	dbr:Al_Green ;
+	dbo:genre	dbr:Soul_music .
+dbr:Little_Light	rdf:type	dbo:Album ;
+	rdfs:label	"Little Light"@en ;
+	dbo:artist	dbr:Allison_Crowe ;
+	dbo:genre	dbr:Rock_music .
+dbr:Little_Wild_One	rdf:type	dbo:Album ;
+	rdfs:label	"Little Wild One"@en ;
+	dbo:artist	dbr:Joan_Osborne ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Live_2002_(Lara_Fabian_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Live 2002 (Lara Fabian album)"@en ;
+	dbo:artist	dbr:Lara_Fabian ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Live_at_Massey_Hall_(Matthew_Good_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Live at Massey Hall (Matthew Good album)"@en ;
+	dbo:artist	dbr:Matthew_Good ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Live_in_Texas_(Vince_Bell_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Live in Texas (Vince Bell album)"@en ;
+	dbo:artist	dbr:Vince_Bell ;
+	dbo:genre	dbr:Alternative_country .
+dbr:Love_at_the_End_of_the_World	rdf:type	dbo:Album ;
+	rdfs:label	"Love at the End of the World"@en ;
+	dbo:artist	dbr:Sam_Roberts ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Lucky_Girl_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Lucky Girl (album)"@en ;
+	dbo:artist	dbr:Katreeya_English ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Pop_music .
+dbr:Marc_Ford_and_the_Neptune_Blues_Club	rdf:type	dbo:Album ;
+	rdfs:label	"Marc Ford and the Neptune Blues Club"@en ;
+	dbo:artist	dbr:Marc_Ford ;
+	dbo:genre	dbr:Southern_rock ,
+		dbr:Blues_rock ,
+		dbr:Jam_band .
+<http://dbpedia.org/resource/Matt_White_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Matt White (musician)"@en .
+<http://dbpedia.org/resource/Melody_Road_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Melody Road (album)"@en ;
+	dbo:artist	dbr:Neil_Diamond ;
+	dbo:genre	dbr:Pop_music .
+dbr:Meri_Kahani	rdf:type	dbo:Album ;
+	rdfs:label	"Meri Kahani"@en ;
+	dbo:artist	dbr:Atif_Aslam ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Rock_music .
+dbr:Mes_Fantaisies	rdf:type	dbo:Album ;
+	rdfs:label	"Mes Fantaisies"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Shy\u0027m> ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Hip_hop_music ,
+		dbr:Pop_music ,
+		dbr:Soul_music .
+dbr:Metamorfoz	rdf:type	dbo:Album ;
+	rdfs:label	"Metamorfoz"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Tarkan_(singer)> ;
+	dbo:genre	dbr:Pop_music .
+dbr:Moment_of_Forever	rdf:type	dbo:Album ;
+	rdfs:label	"Moment of Forever"@en ;
+	dbo:artist	dbr:Willie_Nelson ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Outlaw_country .
+
+dbr:Music_for_Tourists	rdf:type	dbo:Album ;
+	rdfs:label	"Music for Tourists"@en ;
+	dbo:artist	dbr:Chris_Garneau ;
+	dbo:genre	dbr:Indie_pop .
+dbr:Music_of_the_SaGa_series	rdf:type	dbo:Album ;
+	rdfs:label	"Music of the SaGa series"@en ;
+	dbo:artist	dbr:Nobuo_Uematsu ,
+		dbr:Ryuji_Sasai ,
+		dbr:Kenji_Ito ,
+		dbr:Masashi_Hamauzu ;
+	dbo:genre	dbr:Video_game_music .
+dbr:New_Jack_City_II	rdf:type	dbo:Album ;
+	rdfs:label	"New Jack City II"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Bow_Wow_(rapper)> ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Ninja_Tuna	rdf:type	dbo:Album ;
+	rdfs:label	"Ninja Tuna"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Mr._Scruff> ;
+	dbo:genre	dbr:Breakbeat ,
+		dbr:Nu_jazz ,
+		dbr:Electronica ,
+		dbr:Trip_hop ,
+		dbr:Downtempo .
+dbr:No_Definite_Answer	rdf:type	dbo:Album ;
+	rdfs:label	"No Definite Answer"@en ;
+	dbo:artist	dbr:Sam_Beeton ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Nuevamente..._El_Bolero>	rdf:type	dbo:Album ;
+	rdfs:label	"Nuevamente... El Bolero"@en ;
+	dbo:artist	dbr:Rodrigo_de_la_Cadena ;
+	dbo:genre	dbr:Bolero .
+dbr:OK_Now	rdf:type	dbo:Album ;
+	rdfs:label	"OK Now"@en ;
+	dbo:artist	dbr:Jon_McLaughlin ;
+	dbo:genre	dbr:Electropop ,
+		dbr:Pop_music .
+dbr:On_Fire_EP	rdf:type	dbo:Album ;
+	rdfs:label	"On Fire EP"@en ;
+	dbo:artist	dbr:Alec_Empire ;
+	dbo:genre	dbr:Rock_music .
+dbr:On_Your_Sleeve	rdf:type	dbo:Album ;
+	rdfs:label	"On Your Sleeve"@en ;
+	dbo:artist	dbr:Jesse_Malin ;
+	dbo:genre	dbr:Indie_rock .
+<http://dbpedia.org/resource/Oxnard_Sessions,_Vol.2>	rdf:type	dbo:Album ;
+	rdfs:label	"Oxnard Sessions, Vol.2"@en ;
+	dbo:artist	dbr:Mike_Garson ;
+	dbo:genre	dbr:Jazz .
+dbr:Part_of_the_Whole	rdf:type	dbo:Album ;
+	rdfs:label	"Part of the Whole"@en ;
+	dbo:artist	dbr:Mike_Garson ;
+	dbo:genre	dbr:Jazz .
+dbr:Past_in_Different_Ways	rdf:type	dbo:Album ;
+	rdfs:label	"Past in Different Ways"@en ;
+	dbo:artist	dbr:Michael_Kiske ;
+	dbo:genre	dbr:Acoustic_music ,
+		dbr:Rock_music ,
+		dbr:Power_metal .
+dbr:Picks_on_the_Hits	rdf:type	dbo:Album ;
+	rdfs:label	"Picks on the Hits"@en ;
+	dbo:artist	dbr:Chet_Atkins ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Pop_music .
+dbr:Recado	rdf:type	dbo:Album ;
+	rdfs:label	"Recado"@en ;
+	dbo:artist	dbr:Vince_Bell ;
+	dbo:genre	dbr:Alternative_country .
+dbr:Reflets	rdf:type	dbo:Album ;
+	rdfs:label	"Reflets"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Shy\u0027m> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Dance-pop ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:Richard_Marx	rdf:type	dbo:Artist ;
+	rdfs:label	"Richard Marx"@en .
+<http://dbpedia.org/resource/Rock_My_World_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Rock My World (album)"@en ;
+	dbo:artist	dbr:Bret_Michaels ;
+	dbo:genre	dbr:Hard_rock .
+<http://dbpedia.org/resource/Running_Man:_Nike+_Original_Run>	rdf:type	dbo:Album ;
+	rdfs:label	"Running Man: Nike+ Original Run"@en ;
+	dbo:artist	dbr:A-Trak ;
+	dbo:genre	dbr:Hip_hop_music ,
+		<http://dbpedia.org/resource/Electro_(music)> .
+<http://dbpedia.org/resource/Safari_(Jovanotti_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Safari (Jovanotti album)"@en ;
+	dbo:artist	dbr:Jovanotti ;
+	dbo:genre	dbr:Alternative_hip_hop ,
+		dbr:Alternative_rock ,
+		dbr:World_music .
+
+dbr:Sophisticated_Beggar	rdf:type	dbo:Album ;
+	rdfs:label	"Sophisticated Beggar"@en ;
+	dbo:artist	dbr:Roy_Harper ;
+	dbo:genre	dbr:Progressive_folk ,
+		dbr:Folk_baroque .
+dbr:Sounds_Like_This	rdf:type	dbo:Album ;
+	rdfs:label	"Sounds Like This"@en ;
+	dbo:artist	dbr:Eric_Hutchinson ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music .
+dbr:Stefanie_Heinzmann	rdf:type	dbo:Artist ;
+	rdfs:label	"Stefanie Heinzmann"@en .
+<http://dbpedia.org/resource/Still_Standing_(Monica_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Still Standing (Monica album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Monica_(singer)> ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Pop_music ,
+		dbr:Soul_music .
+dbr:Summer_Daydreams	rdf:type	dbo:Album ;
+	rdfs:label	"Summer Daydreams"@en ;
+	dbo:artist	dbr:Kevin_Kern ;
+	dbo:genre	dbr:New-age_music .
+dbr:Sunsets_on_Empire	rdf:type	dbo:Album ;
+	rdfs:label	"Sunsets on Empire"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Fish_(singer)> ;
+	dbo:genre	dbr:Progressive_rock .
+<http://dbpedia.org/resource/Swing_Shift_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Swing Shift (album)"@en ;
+	dbo:artist	dbr:Rik_Emmett ;
+	dbo:genre	dbr:Smooth_jazz ,
+		dbr:Country_music ,
+		dbr:Jazz ,
+		dbr:Swing_music .
+<http://dbpedia.org/resource/T.O.P_(entertainer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"T.O.P (entertainer)"@en .
+dbr:Teche_voda	rdf:type	dbo:Album ;
+	rdfs:label	"Teche voda"@en ;
+	dbo:artist	dbr:Sofia_Rotaru ;
+	dbo:genre	dbr:Pop_music .
+dbr:Tender_Melody	rdf:type	dbo:Album ;
+	rdfs:label	"Tender Melody"@en ;
+	dbo:artist	dbr:Sofia_Rotaru ;
+	dbo:genre	dbr:Pop_music .
+dbr:The_Grey_Album	rdf:type	dbo:Album ;
+	rdfs:label	"The Grey Album"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Danger_Mouse_(musician)> ;
+	dbo:genre	dbr:Hip_hop_music ,
+		<http://dbpedia.org/resource/Mashup_(music)> ,
+		dbr:Rap_rock .
+dbr:The_Leo_Kottke_Anthology	rdf:type	dbo:Album ;
+	rdfs:label	"The Leo Kottke Anthology"@en ;
+	dbo:artist	dbr:Leo_Kottke ;
+	dbo:genre	dbr:Country_music .
+dbr:The_Memphis_Tour	rdf:type	dbo:Album ;
+	rdfs:label	"The Memphis Tour"@en ;
+	dbo:artist	dbr:Guy_Sebastian ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Funk ,
+		dbr:Rhythm_and_blues .
+dbr:The_Recession	rdf:type	dbo:Album ;
+	rdfs:label	"The Recession"@en ;
+	dbo:artist	dbr:Young_Jeezy ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:The_Sicks	rdf:type	dbo:Album ;
+	rdfs:label	"The Sicks"@en ;
+	dbo:artist	dbr:Majandra_Delfino ;
+	dbo:genre	dbr:Downtempo ,
+		dbr:Rock_music ,
+		dbr:Dark_cabaret ,
+		dbr:Alternative_rock ,
+		dbr:Independent_music ,
+		dbr:Electronica ,
+		dbr:Trip_hop .
+dbr:The_Take_Off_All_Your_Clothes_EP	rdf:type	dbo:Album ;
+	rdfs:label	"The Take Off All Your Clothes EP"@en ;
+	dbo:artist	dbr:Jenny_Owen_Youngs ;
+	dbo:genre	dbr:Folk_rock ,
+		dbr:Indie_rock .
+<http://dbpedia.org/resource/The_Videos_(Dannii_Minogue_video)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Videos (Dannii Minogue video)"@en ;
+	dbo:artist	dbr:Dannii_Minogue ;
+	dbo:genre	dbr:Dance-pop .
+dbr:The_Way_I_See_It	rdf:type	dbo:Album ;
+	rdfs:label	"The Way I See It"@en ;
+	dbo:artist	dbr:Raphael_Saadiq ;
+	dbo:genre	dbr:Soul_music .
+dbr:Thelma_Aoyama	rdf:type	dbo:Artist ;
+	rdfs:label	"Thelma Aoyama"@en .
+dbr:This_Kind_of_Love	rdf:type	dbo:Album ;
+	rdfs:label	"This Kind of Love"@en ;
+	dbo:artist	dbr:Carly_Simon ;
+	dbo:genre	dbr:Pop_music .
+dbr:Thou_Shalt_Not_Fall	rdf:type	dbo:Album ;
+	rdfs:label	"Thou Shalt Not Fall"@en ;
+	dbo:artist	dbr:Gerard_McMahon ;
+	dbo:genre	dbr:Rock_music .
+dbr:Three_Ringz	rdf:type	dbo:Album ;
+	rdfs:label	"Three Ringz"@en ;
+	dbo:artist	dbr:T-Pain ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Trouble_or_Nothin\u0027>	rdf:type	dbo:Album ;
+	rdfs:label	"Trouble or Nothin'"@en ;
+	dbo:artist	dbr:Robin_Beck ;
+	dbo:genre	dbr:Album-oriented_rock ,
+		dbr:Rock_music .
+dbr:Two_Men_with_the_Blues	rdf:type	dbo:Album ;
+	rdfs:label	"Two Men with the Blues"@en ;
+	dbo:artist	dbr:Willie_Nelson ,
+		dbr:Wynton_Marsalis ;
+	dbo:genre	dbr:Vocal_jazz ,
+		dbr:Twelve-bar_blues ,
+		dbr:Blues .
+<http://dbpedia.org/resource/Unmasked_(Ira_Losco_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Unmasked (Ira Losco album)"@en ;
+	dbo:artist	dbr:Ira_Losco ;
+	dbo:genre	dbr:Acoustic_music .
+dbr:Up_from_Down_Under	rdf:type	dbo:Album ;
+	rdfs:label	"Up from Down Under"@en ;
+	dbo:artist	dbr:Tommy_Emmanuel ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Country_music ,
+		dbr:Jazz .
+<http://dbpedia.org/resource/Upfront_&_Down_Low>	rdf:type	dbo:Album ;
+	rdfs:label	"Upfront & Down Low"@en ;
+	dbo:artist	dbr:Teddy_Thompson ;
+	dbo:genre	dbr:Alternative_country .
+dbr:Visit_to_Ukraine	rdf:type	dbo:Album ;
+	rdfs:label	"Visit to Ukraine"@en ;
+	dbo:artist	dbr:Sofia_Rotaru ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Wanderlust_(Gavin_Rossdale_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Wanderlust (Gavin Rossdale album)"@en ;
+	dbo:artist	dbr:Gavin_Rossdale ;
+	dbo:genre	dbr:Post-grunge ,
+		dbr:Pop_rock ,
+		dbr:Alternative_rock .
+dbr:Weary_and_Wired	rdf:type	dbo:Album ;
+	rdfs:label	"Weary and Wired"@en ;
+	dbo:artist	dbr:Marc_Ford ;
+	dbo:genre	dbr:Blues_rock ,
+		dbr:Southern_rock ,
+		dbr:Jam_band .
+<http://dbpedia.org/resource/Where_Has_Love_Gone%3F_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Where Has Love Gone? (album)"@en ;
+	dbo:artist	dbr:Sofia_Rotaru ;
+	dbo:genre	dbr:Pop_music .
+dbr:Yedynomu	rdf:type	dbo:Album ;
+	rdfs:label	"Yedynomu"@en ;
+	dbo:artist	dbr:Sofia_Rotaru ;
+	dbo:genre	dbr:Pop_music .
+dbr:You_Broke_My_Heart_in_17_Places	rdf:type	dbo:Album ;
+	rdfs:label	"You Broke My Heart in 17 Places"@en ;
+	dbo:artist	dbr:Tracey_Ullman ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Synthpop .
+dbr:African_Tapestries	rdf:type	dbo:Album ;
+	rdfs:label	"African Tapestries"@en ;
+	dbo:artist	dbr:Hennie_Bekker ;
+	dbo:genre	dbr:World_music .
+<http://dbpedia.org/resource/Apollo_Kids_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Apollo Kids (album)"@en ;
+	dbo:artist	dbr:Ghostface_Killah ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Arika_Kane_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Arika Kane (album)"@en ;
+	dbo:artist	dbr:Arika_Kane ;
+	dbo:genre	dbr:Soul_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/Bella_Voce_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Bella Voce (album)"@en ;
+	dbo:artist	dbr:Sarah_Brightman ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Best_Days_(Matt_White_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Best Days (Matt White album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Matt_White_(musician)> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Soft_rock .
+dbr:Blue_Prince	rdf:type	dbo:Album ;
+	rdfs:label	"Blue Prince"@en ;
+	dbo:artist	dbr:Philip_Catherine ;
+	dbo:genre	dbr:Post-bop ,
+		dbr:Jazz_fusion ,
+		dbr:Jazz .
+<http://dbpedia.org/resource/Collide_(Andy_Hunter_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Collide (Andy Hunter album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Andy_Hunter_(DJ)> ;
+	dbo:genre	dbr:Ambient_music ,
+		<http://dbpedia.org/resource/Trance_(music_genre)> ,
+		dbr:Breakbeat .
+dbr:Dos_Angeles	rdf:type	dbo:Album ;
+	rdfs:label	"Dos Angeles"@en ;
+	dbo:artist	dbr:Joe_Inoue ;
+	dbo:genre	dbr:J-pop ,
+		dbr:Rock_music .
+dbr:Edita_Abdieski	rdf:type	dbo:Artist ;
+	rdfs:label	"Edita Abdieski"@en .
+<http://dbpedia.org/resource/GD_&_TOP>	rdf:type	dbo:Album ;
+	rdfs:label	"GD & TOP"@en ;
+	dbo:artist	<http://dbpedia.org/resource/T.O.P_(entertainer)> ,
+		dbr:G-Dragon ;
+	dbo:genre	dbr:Pop-rap ,
+		dbr:Hip_hop_music ,
+		dbr:Alternative_hip_hop ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/Guilty_Pleasures_(Didrik_Solli-Tangen_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Guilty Pleasures (Didrik Solli-Tangen album)"@en ;
+	dbo:artist	dbr:Didrik_Solli-Tangen ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Heart_of_Me_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Heart of Me (album)"@en ;
+	dbo:artist	dbr:Tim_Urban ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music .
+dbr:In_a_Way	rdf:type	dbo:Album ;
+	rdfs:label	"In a Way"@en ;
+	dbo:artist	dbr:Joe_Inoue ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:J-pop .
+dbr:Just_Charlie	rdf:type	dbo:Album ;
+	rdfs:label	"Just Charlie"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Charlie_Wilson_(singer)> ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:Kaleidoscopes	rdf:type	dbo:Album ;
+	rdfs:label	"Kaleidoscopes"@en ;
+	dbo:artist	dbr:Hennie_Bekker ;
+	dbo:genre	dbr:New-age_music .
+dbr:Lasted	rdf:type	dbo:Album ;
+	rdfs:label	"Lasted"@en ;
+	dbo:artist	dbr:Benoit_Pioulard ;
+	dbo:genre	dbr:Ambient_music ,
+		dbr:Shoegazing .
+dbr:Made_in_Jamaica	rdf:type	dbo:Album ;
+	rdfs:label	"Made in Jamaica"@en ;
+	dbo:artist	dbr:Bob_Sinclar ;
+	dbo:genre	dbr:Reggae_fusion ,
+		dbr:Reggae ,
+		dbr:Ragga .
+<http://dbpedia.org/resource/Me!_Me!_Me!>	rdf:type	dbo:Album ;
+	rdfs:label	"Me! Me! Me!"@en ;
+	dbo:artist	dbr:Joe_Inoue ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:J-pop .
+dbr:Mis_Favoritas	rdf:type	dbo:Album ;
+	rdfs:label	"Mis Favoritas"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Latin_pop ,
+		dbr:Mariachi .
+dbr:Now_Is_Not_Forever	rdf:type	dbo:Album ;
+	rdfs:label	"Now Is Not Forever"@en ;
+	dbo:artist	<http://dbpedia.org/resource/B._Reith> ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Pop_music .
+dbr:Paula_Mitrache_in_Haiducii	rdf:type	dbo:Album ;
+	rdfs:label	"Paula Mitrache in Haiducii"@en ;
+	dbo:artist	dbr:Haiducii ;
+	dbo:genre	dbr:House_music ,
+		dbr:Electropop .
+<http://dbpedia.org/resource/Spring_Rain_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Spring Rain (album)"@en ;
+	dbo:artist	dbr:Hennie_Bekker ;
+	dbo:genre	dbr:New-age_music .
+
+dbr:Three_Questions	rdf:type	dbo:Album ;
+	rdfs:label	"Three Questions"@en ;
+	dbo:artist	dbr:Aira_Mitsuki ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Electropop ,
+		dbr:Electronic_rock ,
+		dbr:J-pop ,
+		dbr:Vocal_trance ,
+		dbr:Experimental_music .
+<http://dbpedia.org/resource/Thrilla_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Thrilla (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Mr._Del> ;
+	dbo:genre	dbr:Christian_hip_hop ,
+		dbr:Crunk ,
+		dbr:Southern_hip_hop .
+dbr:Timbe	rdf:type	dbo:Artist ;
+	rdfs:label	"Timbe"@en .
+dbr:Time_Actor	rdf:type	dbo:Album ;
+	rdfs:label	"Time Actor"@en ;
+	dbo:artist	dbr:Klaus_Schulze ;
+	dbo:genre	<http://dbpedia.org/resource/Trance_(music_genre)> .
+dbr:Wasted_in_Jackson	rdf:type	dbo:Album ;
+	rdfs:label	"Wasted in Jackson"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Lolo_(singer)> ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/What_Love_Songs_Didn\u0027t_Tell_You>	rdf:type	dbo:Album ;
+	rdfs:label	"What Love Songs Didn't Tell You"@en ;
+	dbo:artist	dbr:Fish_Leong ;
+	dbo:genre	dbr:Mandopop .
+dbr:Zulu_Rock	rdf:type	dbo:Album ;
+	rdfs:label	"Zulu Rock"@en ;
+	dbo:artist	dbr:Lizzy_Mercier_Descloux ;
+	dbo:genre	dbr:Worldbeat .
+<http://dbpedia.org/resource/24_Hour_Karate_School>	rdf:type	dbo:Album ;
+	rdfs:label	"24 Hour Karate School"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Ski_(record_producer)> ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/3._elpa>	rdf:type	dbo:Album ;
+	rdfs:label	"3. elpa"@en ;
+	dbo:artist	dbr:Gustavs_Butelis ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/34th_N_Lex>	rdf:type	dbo:Album ;
+	rdfs:label	"34th N Lex"@en ;
+	dbo:artist	dbr:Randy_Brecker ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/8Bit_Heart>	rdf:type	dbo:Album ;
+	rdfs:label	"8Bit Heart"@en ;
+	dbo:artist	dbr:Simon_Curtis ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Chiptune ,
+		dbr:Dance-pop ,
+		dbr:Electropop .
+<http://dbpedia.org/resource/9.11_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"9.11 (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Ron_%22Bumblefoot%22_Thal> ;
+	dbo:genre	dbr:Progressive_rock ,
+		dbr:Hard_rock .
+<http://dbpedia.org/resource/A._A._Bondy>	rdf:type	dbo:Artist ;
+	rdfs:label	"A. A. Bondy"@en .
+dbr:A_Curious_Thing	rdf:type	dbo:Album ;
+	rdfs:label	"A Curious Thing"@en ;
+	dbo:artist	dbr:Amy_Macdonald ;
+	dbo:genre	dbr:Soft_rock ,
+		dbr:Pop_rock .
+dbr:Adio_Heimona	rdf:type	dbo:Album ;
+	rdfs:label	"Adio Heimona"@en ;
+	dbo:artist	dbr:Nikos_Karvelas ;
+	dbo:genre	dbr:Soft_rock ,
+		dbr:Pop_rock .
+<http://dbpedia.org/resource/Afloat_(Zhao_Wei_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Afloat (Zhao Wei album)"@en ;
+	dbo:artist	dbr:Zhao_Wei ;
+	dbo:genre	dbr:Mandopop .
+<http://dbpedia.org/resource/Ain\u0027t_No_Saint>	rdf:type	dbo:Album ;
+	rdfs:label	"Ain't No Saint"@en ;
+	dbo:artist	dbr:John_Martyn ;
+	dbo:genre	dbr:Blues .
+dbr:Al_Quds_Tunadeena	rdf:type	dbo:Album ;
+	rdfs:label	"Al Quds Tunadeena"@en ;
+	dbo:artist	dbr:Ahmed_Bukhatir ;
+	dbo:genre	dbr:Nasheed .
+dbr:Amit_Erez	rdf:type	dbo:Artist ;
+	rdfs:label	"Amit Erez"@en .
+dbr:An_Introduction_to_Syd_Barrett	rdf:type	dbo:Album ;
+	rdfs:label	"An Introduction to Syd Barrett"@en ;
+	dbo:artist	dbr:Syd_Barrett ;
+	dbo:genre	dbr:Rock_music .
+dbr:Ancient_Tones	rdf:type	dbo:Album ;
+	rdfs:label	"Ancient Tones"@en ;
+	dbo:artist	dbr:Ricky_Skaggs ;
+	dbo:genre	dbr:Bluegrass_music .
+<http://dbpedia.org/resource/Angel\u0027s_Suitcase>	rdf:type	dbo:Album ;
+	rdfs:label	"Angel's Suitcase"@en ;
+	dbo:artist	dbr:Zhao_Wei ;
+	dbo:genre	dbr:Mandopop .
+<http://dbpedia.org/resource/Are_You_%22Fried_Chickenz%22%3F%3F>	rdf:type	dbo:Album ;
+	rdfs:label	"Are You \"Fried Chickenz\"??"@en ;
+	dbo:artist	dbr:Gackt ;
+	dbo:genre	dbr:Hard_rock ,
+		dbr:Symphonic_rock ,
+		dbr:Alternative_rock ,
+		dbr:Art_rock ,
+		dbr:Neo-progressive_rock .
+dbr:Arika_Kane	rdf:type	dbo:Artist ;
+	rdfs:label	"Arika Kane"@en .
+<http://dbpedia.org/resource/At_the_Dream\u0027s_Edge>	rdf:type	dbo:Album ;
+	rdfs:label	"At the Dream's Edge"@en ;
+	dbo:artist	dbr:Paul_Ortiz ;
+	dbo:genre	dbr:Ambient_music ,
+		dbr:Progressive_metal ,
+		dbr:Djent .
+
+<http://dbpedia.org/resource/Best:_Third_Universe_&_8th_Al._Universe>	rdf:type	dbo:Album ;
+	rdfs:label	"Best: Third Universe & 8th Al. Universe"@en ;
+	dbo:artist	dbr:Kumi_Koda ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Pop_rock ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:Best_Destiny	rdf:type	dbo:Album ;
+	rdfs:label	"Best Destiny"@en ;
+	dbo:artist	dbr:Miliyah_Kato ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Pop_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/Between_Two_Worlds_(Trip_Lee_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Between Two Worlds (Trip Lee album)"@en ;
+	dbo:artist	dbr:Trip_Lee ;
+	dbo:genre	dbr:Christian_hip_hop .
+
+dbr:Black_Sands	rdf:type	dbo:Album ;
+	rdfs:label	"Black Sands"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Bonobo_(musician)> ;
+	dbo:genre	dbr:Downtempo ,
+		dbr:Chill-out_music .
+dbr:Blissful_Encounter	rdf:type	dbo:Album ;
+	rdfs:label	"Blissful Encounter"@en ;
+	dbo:artist	dbr:Ariel_Lin ;
+	dbo:genre	dbr:Mandopop .
+<http://dbpedia.org/resource/Bluegrass_Rules!>	rdf:type	dbo:Album ;
+	rdfs:label	"Bluegrass Rules!"@en ;
+	dbo:artist	dbr:Ricky_Skaggs ;
+	dbo:genre	dbr:Bluegrass_music ,
+		dbr:Country_music .
+<http://dbpedia.org/resource/Boy_Meets_World_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Boy Meets World (album)"@en ;
+	dbo:artist	dbr:Fashawn ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Brand_New_Love_Affair_(EP)>	rdf:type	dbo:Album ;
+	rdfs:label	"Brand New Love Affair (EP)"@en ;
+	dbo:artist	dbr:Amanda_Lear ;
+	dbo:genre	dbr:Electropop .
+dbr:Brand_New_Strings	rdf:type	dbo:Album ;
+	rdfs:label	"Brand New Strings"@en ;
+	dbo:artist	dbr:Ricky_Skaggs ;
+	dbo:genre	dbr:Bluegrass_music .
+dbr:Bright_Light_Ballads	rdf:type	dbo:Album ;
+	rdfs:label	"Bright Light Ballads"@en ;
+	dbo:artist	dbr:Howie_Payne ;
+	dbo:genre	dbr:Blues ,
+		dbr:Acoustic_music .
+<http://dbpedia.org/resource/Buika_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Buika (album)"@en ;
+	dbo:artist	dbr:Concha_Buika ;
+	dbo:genre	dbr:Jazz ,
+		<http://dbpedia.org/resource/Copla_(music)> ,
+		dbr:World_music ,
+		dbr:Funk .
+dbr:Carpathian_Tragedies	rdf:type	dbo:Album ;
+	rdfs:label	"Carpathian Tragedies"@en ;
+	dbo:artist	dbr:Alessandro_Nunziati ;
+	dbo:genre	dbr:Symphonic_black_metal .
+<http://dbpedia.org/resource/Curly\u0027s_Airships>	rdf:type	dbo:Album ;
+	rdfs:label	"Curly's Airships"@en ;
+	dbo:artist	dbr:Judge_Smith ;
+	dbo:genre	dbr:Art_rock .
+<http://dbpedia.org/resource/Custom_Built_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Custom Built (album)"@en ;
+	dbo:artist	dbr:Bret_Michaels ;
+	dbo:genre	dbr:Country_rock ,
+		dbr:Rock_music .
+dbr:Daniel_Diges	rdf:type	dbo:Artist ;
+	rdfs:label	"Daniel Diges"@en .
+<http://dbpedia.org/resource/Deffest!_and_Baddest!>	rdf:type	dbo:Album ;
+	rdfs:label	"Deffest! and Baddest!"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Wendy_O._Williams> ;
+	dbo:genre	dbr:Rap_rock .
+dbr:Del_Otro_Lado_del_Sol	rdf:type	dbo:Album ;
+	rdfs:label	"Del Otro Lado del Sol"@en ;
+	dbo:artist	dbr:Ricardo_Arjona ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Pop_music .
+dbr:Didrik_Solli-Tangen	rdf:type	dbo:Artist ;
+	rdfs:label	"Didrik Solli-Tangen"@en .
+<http://dbpedia.org/resource/Dinner_and_a_Movie_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Dinner and a Movie (album)"@en ;
+	dbo:artist	dbr:Brotha_Lynch_Hung ;
+	dbo:genre	dbr:West_Coast_hip_hop ,
+		dbr:Hip_hop_soul ,
+		dbr:Hardcore_hip_hop ,
+		dbr:Gangsta_rap ,
+		dbr:Horrorcore .
+dbr:Downtown_Church	rdf:type	dbo:Album ;
+	rdfs:label	"Downtown Church"@en ;
+	dbo:artist	dbr:Patty_Griffin ;
+	dbo:genre	dbr:Gospel_music .
+dbr:Espectacular	rdf:type	dbo:Album ;
+	rdfs:label	"Espectacular"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Latin_pop ,
+		dbr:Mariachi .
+dbr:Farryl_Purkiss	rdf:type	dbo:Artist ;
+	rdfs:label	"Farryl Purkiss"@en .
+dbr:Fartaqi	rdf:type	dbo:Album ;
+	rdfs:label	"Fartaqi"@en ;
+	dbo:artist	dbr:Ahmed_Bukhatir ;
+	dbo:genre	dbr:Nasheed .
+dbr:Fashawn	rdf:type	dbo:Artist ;
+	rdfs:label	"Fashawn"@en .
+<http://dbpedia.org/resource/First_Story_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"First Story (album)"@en ;
+	dbo:artist	dbr:The_Sxplay ;
+	dbo:genre	dbr:J-pop .
+dbr:Flockaveli	rdf:type	dbo:Album ;
+	rdfs:label	"Flockaveli"@en ;
+	dbo:artist	dbr:Waka_Flocka_Flame ;
+	dbo:genre	dbr:Crunk ,
+		dbr:Gangsta_rap .
+dbr:Fly_Yellow_Moon	rdf:type	dbo:Album ;
+	rdfs:label	"Fly Yellow Moon"@en ;
+	dbo:artist	dbr:Fyfe_Dangerfield ;
+	dbo:genre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Fruitbats_&_Crows>	rdf:type	dbo:Album ;
+	rdfs:label	"Fruitbats & Crows"@en ;
+	dbo:artist	dbr:Farryl_Purkiss ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/G.NA>	rdf:type	dbo:Artist ;
+	rdfs:label	"G.NA"@en .
+dbr:Geva_Alon	rdf:type	dbo:Artist ;
+	rdfs:label	"Geva Alon"@en .
+<http://dbpedia.org/resource/Giro_Apo_T\u0027_Oneiro>	rdf:type	dbo:Album ;
+	rdfs:label	"Giro Apo T' Oneiro"@en ;
+	dbo:artist	dbr:Elena_Paparizou ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Pop_music ,
+		dbr:Electropop .
+<http://dbpedia.org/resource/Greatest_Hits_(2009_Samantha_Fox_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greatest Hits (2009 Samantha Fox album)"@en ;
+	dbo:artist	dbr:Samantha_Fox ;
+	dbo:genre	dbr:Pop_music .
+dbr:Gustavs_Butelis	rdf:type	dbo:Artist ;
+	rdfs:label	"Gustavs Butelis"@en .
+dbr:Hang_Cool_Teddy_Bear	rdf:type	dbo:Album ;
+	rdfs:label	"Hang Cool Teddy Bear"@en ;
+	dbo:artist	dbr:Meat_Loaf ;
+	dbo:genre	dbr:Hard_rock ,
+		dbr:Rock_music .
+dbr:Hate_Lives_in_a_Small_Town	rdf:type	dbo:Album ;
+	rdfs:label	"Hate Lives in a Small Town"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Voltaire_(musician)> ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Have_Guitar,_Will_Travel_(Joe_Perry_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Have Guitar, Will Travel (Joe Perry album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Joe_Perry_(musician)> ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Heaven_&_Earth_(Phil_Wickham_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Heaven & Earth (Phil Wickham album)"@en ;
+	dbo:artist	dbr:Phil_Wickham ;
+	dbo:genre	dbr:Contemporary_worship_music ,
+		dbr:Contemporary_Christian_music .
+dbr:Horror_Masterpiece	rdf:type	dbo:Album ;
+	rdfs:label	"Horror Masterpiece"@en ;
+	dbo:artist	dbr:Alessandro_Nunziati ;
+	dbo:genre	dbr:Industrial_metal ,
+		dbr:Gothic_metal .
+dbr:Huma-rhythm	rdf:type	dbo:Album ;
+	rdfs:label	"Huma-rhythm"@en ;
+	dbo:artist	dbr:Hitomi ;
+	dbo:genre	dbr:J-pop .
+<http://dbpedia.org/resource/I\u0027d_Rather_Go_Blonde>	rdf:type	dbo:Album ;
+	rdfs:label	"I'd Rather Go Blonde"@en ;
+	dbo:artist	dbr:Eleanor_McEvoy ;
+	dbo:genre	dbr:Rock_and_roll ,
+		dbr:Folk_rock .
+dbr:Ignore_This	rdf:type	dbo:Album ;
+	rdfs:label	"Ignore This"@en ;
+	dbo:artist	dbr:Salem_Al_Fakir ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Pop_music .
+dbr:In_Just_That_Kind_of_a_Mood	rdf:type	dbo:Album ;
+	rdfs:label	"In Just That Kind of a Mood"@en ;
+	dbo:artist	dbr:Jonny_Blu ;
+	dbo:genre	dbr:Traditional_pop_music ,
+		dbr:Big_band ,
+		dbr:Pop_music ,
+		dbr:Swing_music ,
+		dbr:Jazz .
+
+dbr:Indifferenze	rdf:type	dbo:Album ;
+	rdfs:label	"Indifferenze"@en ;
+	dbo:artist	dbr:Susanna_Parigi ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Instrumentals_(Ricky_Skaggs_and_Kentucky_Thunder_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Instrumentals (Ricky Skaggs and Kentucky Thunder album)"@en ;
+	dbo:artist	dbr:Ricky_Skaggs ;
+	dbo:genre	dbr:Bluegrass_music .
+<http://dbpedia.org/resource/Kate_Earl_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Kate Earl (album)"@en ;
+	dbo:artist	dbr:Kate_Earl ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rhythm_and_blues .
+<http://dbpedia.org/resource/Kill_Devil_Hills_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Kill Devil Hills (album)"@en ;
+	dbo:artist	dbr:DJ_Muggs ;
+	dbo:genre	dbr:Hardcore_hip_hop ,
+		dbr:Political_hip_hop ,
+		dbr:Underground_hip_hop ,
+		dbr:Hip_hop_music .
+dbr:Kirsty_MacColl	rdf:type	dbo:Artist ;
+	rdfs:label	"Kirsty MacColl"@en .
+<http://dbpedia.org/resource/Kris_Allen_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Kris Allen (album)"@en ;
+	dbo:artist	dbr:Kris_Allen ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Alternative_rock .
+dbr:La_Historia_del_Divo	rdf:type	dbo:Album ;
+	rdfs:label	"La Historia del Divo"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Latin_pop ,
+		dbr:Regional_styles_of_Mexican_music ,
+		dbr:Mariachi ,
+		dbr:Ranchera .
+dbr:Leva-me_aos_Fados	rdf:type	dbo:Album ;
+	rdfs:label	"Leva-me aos Fados"@en ;
+	dbo:artist	dbr:Ana_Moura ;
+	dbo:genre	dbr:Fado ,
+		dbr:Acoustic_music .
+<http://dbpedia.org/resource/Life_Is_Sweet!_Nice_to_Meet_You>	rdf:type	dbo:Album ;
+	rdfs:label	"Life Is Sweet! Nice to Meet You"@en ;
+	dbo:artist	dbr:Dev_Hynes ;
+	dbo:genre	dbr:Indie_rock .
+dbr:Light_Ahead	rdf:type	dbo:Album ;
+	rdfs:label	"Light Ahead"@en ;
+	dbo:artist	dbr:Iconiq ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Synthpop ,
+		dbr:J-pop .
+dbr:Lions_and_Liars	rdf:type	dbo:Album ;
+	rdfs:label	"Lions and Liars"@en ;
+	dbo:artist	dbr:Sho_Baraka ;
+	dbo:genre	dbr:Christian_hip_hop .
+
+<http://dbpedia.org/resource/Live_at_the_Village_Vanguard_(Tom_Harrell_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Live at the Village Vanguard (Tom Harrell album)"@en ;
+	dbo:artist	dbr:Tom_Harrell ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Live_in_London_(George_Michael_video)>	rdf:type	dbo:Album ;
+	rdfs:label	"Live in London (George Michael video)"@en ;
+	dbo:artist	dbr:George_Michael ;
+	dbo:genre	dbr:Pop_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Dance-pop .
+<http://dbpedia.org/resource/Lostboy!_AKA_Jim_Kerr>	rdf:type	dbo:Album ;
+	rdfs:label	"Lostboy! AKA Jim Kerr"@en ;
+	dbo:artist	dbr:Jim_Kerr ;
+	dbo:genre	dbr:Rock_and_roll .
+<http://dbpedia.org/resource/Love_God,_Love_People>	rdf:type	dbo:Album ;
+	rdfs:label	"Love God, Love People"@en ;
+	dbo:artist	dbr:Israel_Houghton ;
+	dbo:genre	dbr:Contemporary_worship_music .
+dbr:Love_It_to_Life	rdf:type	dbo:Album ;
+	rdfs:label	"Love It to Life"@en ;
+	dbo:artist	dbr:Jesse_Malin ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Folk_rock ,
+		dbr:Punk_rock .
+dbr:Love_King	rdf:type	dbo:Album ;
+	rdfs:label	"Love King"@en ;
+	dbo:artist	dbr:The-Dream ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/Love_Letter_(Sajjad_Ali_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Love Letter (Sajjad Ali album)"@en ;
+	dbo:artist	dbr:Sajjad_Ali ;
+	dbo:genre	dbr:Pop_music .
+dbr:Love_Made_Me_Do_It	rdf:type	dbo:Album ;
+	rdfs:label	"Love Made Me Do It"@en ;
+	dbo:artist	dbr:Elin_Lanto ;
+	dbo:genre	dbr:Synthpop ,
+		dbr:Electropop ,
+		dbr:Pop_rock .
+<http://dbpedia.org/resource/Love_Me_Back_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Love Me Back (album)"@en ;
+	dbo:artist	dbr:Jazmine_Sullivan ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Hip_hop_soul .
+dbr:Love_and_Its_Opposite	rdf:type	dbo:Album ;
+	rdfs:label	"Love and Its Opposite"@en ;
+	dbo:artist	dbr:Tracey_Thorn ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Luis_Miguel_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Luis Miguel (album)"@en ;
+	dbo:artist	dbr:Luis_Miguel ;
+	dbo:genre	dbr:Latin_pop .
+dbr:Man_from_Another_Time	rdf:type	dbo:Album ;
+	rdfs:label	"Man from Another Time"@en ;
+	dbo:artist	dbr:Seasick_Steve ;
+	dbo:genre	dbr:Blues ,
+		dbr:Country_music .
+<http://dbpedia.org/resource/Man_on_the_Moon_II:_The_Legend_of_Mr._Rager>	rdf:type	dbo:Album ;
+	rdfs:label	"Man on the Moon II: The Legend of Mr. Rager"@en ;
+	dbo:artist	dbr:Kid_Cudi ;
+	dbo:genre	dbr:Neo-psychedelia ,
+		dbr:Alternative_hip_hop .
+dbr:Marco_Mengoni	rdf:type	dbo:Artist ;
+	rdfs:label	"Marco Mengoni"@en .
+dbr:Mariem_Hassan	rdf:type	dbo:Artist ;
+	rdfs:label	"Mariem Hassan"@en .
+dbr:Metatronic	rdf:type	dbo:Album ;
+	rdfs:label	"Metatronic"@en ;
+	dbo:artist	dbr:John_Foxx ;
+	dbo:genre	dbr:Ambient_music ,
+		dbr:Synthpop ,
+		dbr:New_wave_music .
+<http://dbpedia.org/resource/Mihalis_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Mihalis (album)"@en ;
+	dbo:artist	dbr:Michalis_Hatzigiannis ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Mis_Canciones,_Mis_Amigos>	rdf:type	dbo:Album ;
+	rdfs:label	"Mis Canciones, Mis Amigos"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Latin_pop .
+dbr:Mis_Ojos_Tristes	rdf:type	dbo:Album ;
+	rdfs:label	"Mis Ojos Tristes"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Latin_pop .
+dbr:Moments_with_Allah	rdf:type	dbo:Album ;
+	rdfs:label	"Moments with Allah"@en ;
+	dbo:artist	dbr:Ahmed_Bukhatir ;
+	dbo:genre	dbr:Nasheed .
+dbr:Mounqaliba	rdf:type	dbo:Album ;
+	rdfs:label	"Mounqaliba"@en ;
+	dbo:artist	dbr:Natacha_Atlas ;
+	dbo:genre	dbr:World_music .
+dbr:Murder_of_Tides	rdf:type	dbo:Album ;
+	rdfs:label	"Murder of Tides"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Will_Johnson_(musician)> ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Music_&_Me_(SIRPAUL_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Music & Me (SIRPAUL album)"@en ;
+	dbo:artist	dbr:SIRPAUL ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Electronica ,
+		dbr:Pop_music .
+dbr:My_Love_Journey_1km	rdf:type	dbo:Album ;
+	rdfs:label	"My Love Journey 1km"@en ;
+	dbo:artist	dbr:Valen_Hsu ;
+	dbo:genre	dbr:Mandopop .
+<http://dbpedia.org/resource/My_So-Called_Life_(Venetian_Snares_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"My So-Called Life (Venetian Snares album)"@en ;
+	dbo:artist	dbr:Venetian_Snares ;
+	dbo:genre	dbr:Breakcore .
+<http://dbpedia.org/resource/No_Gravity_(Shontelle_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"No Gravity (Shontelle album)"@en ;
+	dbo:artist	dbr:Shontelle ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Dance-pop ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/No_Regrets_(Elisabeth_Withers_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"No Regrets (Elisabeth Withers album)"@en ;
+	dbo:artist	dbr:Elisabeth_Withers ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Neo_soul ,
+		dbr:Jazz ,
+		dbr:Soul_music .
+
+dbr:Oh_Blue_Christmas	rdf:type	dbo:Album ;
+	rdfs:label	"Oh Blue Christmas"@en ;
+	dbo:artist	dbr:A_Fine_Frenzy ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Ola_Einai_Endaxi	rdf:type	dbo:Album ;
+	rdfs:label	"Ola Einai Endaxi"@en ;
+	dbo:artist	dbr:Nikos_Karvelas ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Electronica .
+
+<http://dbpedia.org/resource/Passion,_Pain_&_Pleasure>	rdf:type	dbo:Album ;
+	rdfs:label	"Passion, Pain & Pleasure"@en ;
+	dbo:artist	dbr:Trey_Songz ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> .
+
+
+dbr:Por_Los_Siglos	rdf:type	dbo:Album ;
+	rdfs:label	"Por Los Siglos"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Latin_pop ,
+		dbr:Regional_styles_of_Mexican_music .
+dbr:Probe_Audio	rdf:type	dbo:Album ;
+	rdfs:label	"Probe Audio"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Guess_Who_(rapper)> ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Rave_Digger	rdf:type	dbo:Album ;
+	rdfs:label	"Rave Digger"@en ;
+	dbo:artist	dbr:Danny_Byrd ;
+	dbo:genre	dbr:Drum_and_bass .
+dbr:Richard_Durand	rdf:type	dbo:Artist ;
+	rdfs:label	"Richard Durand"@en .
+dbr:Ride_the_Times	rdf:type	dbo:Album ;
+	rdfs:label	"Ride the Times"@en ;
+	dbo:artist	dbr:Iain_Matthews ;
+	dbo:genre	dbr:Folk_rock ,
+		dbr:Country_music ,
+		dbr:Jazz .
+<http://dbpedia.org/resource/Rock_\u0027n\u0027_Roll_Circus>	rdf:type	dbo:Album ;
+	rdfs:label	"Rock 'n' Roll Circus"@en ;
+	dbo:artist	dbr:Ayumi_Hamasaki ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:J-pop .
+<http://dbpedia.org/resource/Ron_%22Bumblefoot%22_Thal>	rdf:type	dbo:Artist ;
+	rdfs:label	"Ron \"Bumblefoot\" Thal"@en .
+dbr:SIRPAUL	rdf:type	dbo:Artist ;
+	rdfs:label	"SIRPAUL"@en .
+dbr:Sex_Dreams_and_Denim_Jeans	rdf:type	dbo:Album ;
+	rdfs:label	"Sex Dreams and Denim Jeans"@en ;
+	dbo:artist	dbr:Uffie ;
+	dbo:genre	dbr:Alternative_dance .
+<http://dbpedia.org/resource/Shooting_Silvio_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"Shooting Silvio (soundtrack)"@en ;
+	dbo:artist	dbr:Stefano_Lentini ;
+	dbo:genre	dbr:Indie_rock ,
+		dbr:World_music .
+dbr:Siempre_En_Mi_Mente	rdf:type	dbo:Album ;
+	rdfs:label	"Siempre En Mi Mente"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Latin_pop .
+dbr:Siempre_Estoy_Pensando_en_Ti	rdf:type	dbo:Album ;
+	rdfs:label	"Siempre Estoy Pensando en Ti"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Latin_pop .
+dbr:Simplemente_Lo_Mejor	rdf:type	dbo:Album ;
+	rdfs:label	"Simplemente Lo Mejor"@en ;
+	dbo:artist	dbr:Ricardo_Arjona ;
+	dbo:genre	dbr:Latin_pop .
+<http://dbpedia.org/resource/Slope_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Slope (album)"@en ;
+	dbo:artist	dbr:Steve_Jansen ;
+	dbo:genre	dbr:Alternative_rock .
+dbr:Statik_Selektah	rdf:type	dbo:Artist ;
+	rdfs:label	"Statik Selektah"@en .
+dbr:Stefano_Lentini	rdf:type	dbo:Artist ;
+	rdfs:label	"Stefano Lentini"@en .
+dbr:Steve_Roden	rdf:type	dbo:Artist ;
+	rdfs:label	"Steve Roden"@en .
+dbr:Suburban_Nature	rdf:type	dbo:Album ;
+	rdfs:label	"Suburban Nature"@en ;
+	dbo:artist	dbr:Sarah_Jaffe ;
+	dbo:genre	dbr:Indie_rock .
+dbr:Susanna_Parigi	rdf:type	dbo:Artist ;
+	rdfs:label	"Susanna Parigi"@en .
+dbr:Sylvia_Ratonel	rdf:type	dbo:Artist ;
+	rdfs:label	"Sylvia Ratonel"@en .
+<http://dbpedia.org/resource/Take_One_(Adam_Lambert_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Take One (Adam Lambert album)"@en ;
+	dbo:artist	dbr:Adam_Lambert ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Tamar_Kaprelian	rdf:type	dbo:Artist ;
+	rdfs:label	"Tamar Kaprelian"@en .
+dbr:Termanology	rdf:type	dbo:Artist ;
+	rdfs:label	"Termanology"@en .
+dbr:The_1995_Sessions	rdf:type	dbo:Album ;
+	rdfs:label	"The 1995 Sessions"@en ;
+	dbo:artist	dbr:Dannii_Minogue ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/The_5th_Element_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"The 5th Element (album)"@en ;
+	dbo:artist	dbr:Tynisha_Keli ;
+	dbo:genre	dbr:Hip_hop_music ,
+		dbr:Pop_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/The_Angel\u0027s_Message_to_Me>	rdf:type	dbo:Album ;
+	rdfs:label	"The Angel's Message to Me"@en ;
+	dbo:artist	dbr:Chris_Brokaw ;
+	dbo:genre	dbr:Ragtime ,
+		dbr:Blues .
+<http://dbpedia.org/resource/The_Chronicles_of_Narnia:_The_Voyage_of_the_Dawn_Treader_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Chronicles of Narnia: The Voyage of the Dawn Treader (soundtrack)"@en ;
+	dbo:artist	dbr:David_Arnold ;
+	dbo:genre	dbr:Film_score .
+dbr:The_Defamation_of_Strickland_Banks	rdf:type	dbo:Album ;
+	rdfs:label	"The Defamation of Strickland Banks"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Plan_B_(musician)> ;
+	dbo:genre	dbr:Hip_hop_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Soul_music .
+dbr:The_Epic_Masters	rdf:type	dbo:Album ;
+	rdfs:label	"The Epic Masters"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Shakin\u0027_Stevens> ;
+	dbo:genre	dbr:Rock_and_roll ,
+		dbr:Pop_music ,
+		dbr:Rockabilly .
+dbr:The_Game_of_Monogamy	rdf:type	dbo:Album ;
+	rdfs:label	"The Game of Monogamy"@en ;
+	dbo:artist	dbr:Tim_Kasher ;
+	dbo:genre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/The_Love_&_War_MasterPeace>	rdf:type	dbo:Album ;
+	rdfs:label	"The Love & War MasterPeace"@en ;
+	dbo:artist	dbr:Raheem_DeVaughn ;
+	dbo:genre	dbr:Neo_soul ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Soul_music .
+<http://dbpedia.org/resource/The_Old_Shit_(Basshunter_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Old Shit (Basshunter album)"@en ;
+	dbo:artist	dbr:Basshunter ;
+	dbo:genre	dbr:Eurodance ,
+		dbr:Hardstyle .
+dbr:The_Ready_Set	rdf:type	dbo:Artist ;
+	rdfs:label	"The Ready Set"@en .
+dbr:The_Sellout	rdf:type	dbo:Album ;
+	rdfs:label	"The Sellout"@en ;
+	dbo:artist	dbr:Macy_Gray ;
+	dbo:genre	dbr:Neo_soul ,
+		<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Soul_music ,
+		dbr:Pop_music .
+dbr:The_Shimmering_Hour	rdf:type	dbo:Album ;
+	rdfs:label	"The Shimmering Hour"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Wisp_(musician)> ;
+	dbo:genre	dbr:Intelligent_dance_music .
+<http://dbpedia.org/resource/The_Social_Network_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Social Network (soundtrack)"@en ;
+	dbo:artist	dbr:Atticus_Ross ,
+		dbr:Trent_Reznor ;
+	dbo:genre	dbr:Experimental_music ,
+		dbr:Dark_ambient ,
+		dbr:Electronica ,
+		dbr:Post-industrial_music .
+<http://dbpedia.org/resource/The_Twilight_Saga:_New_Moon_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"The Twilight Saga: New Moon (soundtrack)"@en ;
+	dbo:artist	dbr:Alexandre_Desplat ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Alternative_rock ,
+		dbr:Film_score ,
+		dbr:Indie_rock .
+dbr:The_Wild_Trapeze	rdf:type	dbo:Album ;
+	rdfs:label	"The Wild Trapeze"@en ;
+	dbo:artist	dbr:Brandon_Boyd ;
+	dbo:genre	dbr:Indie_rock ,
+		dbr:Alternative_rock ,
+		dbr:Acoustic_music .
+dbr:There_Are_Debts	rdf:type	dbo:Album ;
+	rdfs:label	"There Are Debts"@en ;
+	dbo:artist	<http://dbpedia.org/resource/David_Hopkins_(musician)> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music ,
+		dbr:Acoustic_music .
+dbr:Thought_Balloon_Mushroom_Cloud	rdf:type	dbo:Album ;
+	rdfs:label	"Thought Balloon Mushroom Cloud"@en ;
+	dbo:artist	dbr:MC_Paul_Barman ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Tim_Urban	rdf:type	dbo:Artist ;
+	rdfs:label	"Tim Urban"@en .
+<http://dbpedia.org/resource/Time\u0027s_Mirror>	rdf:type	dbo:Album ;
+	rdfs:label	"Time's Mirror"@en ;
+	dbo:artist	dbr:Tom_Harrell ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Big_band .
+<http://dbpedia.org/resource/True_Devotion_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"True Devotion (album)"@en ;
+	dbo:artist	dbr:Rocky_Votolato ;
+	dbo:genre	dbr:Acoustic_music .
+dbr:Tying_Tiffany	rdf:type	dbo:Artist ;
+	rdfs:label	"Tying Tiffany"@en .
+dbr:Vic_Chou	rdf:type	dbo:Artist ;
+	rdfs:label	"Vic Chou"@en .
+<http://dbpedia.org/resource/Virtuoso_Guitar_(Lily_Afshar_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Virtuoso Guitar (Lily Afshar album)"@en ;
+	dbo:artist	dbr:Lily_Afshar ;
+	dbo:genre	dbr:Contemporary_classical_guitar .
+dbr:Vultures_Await	rdf:type	dbo:Album ;
+	rdfs:label	"Vultures Await"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Will_Johnson_(musician)> ;
+	dbo:genre	dbr:Rock_music .
+dbr:When_Everything_Breaks_Open	rdf:type	dbo:Album ;
+	rdfs:label	"When Everything Breaks Open"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Matt_Morris_(musician)> ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Will_Stratton	rdf:type	dbo:Artist ;
+	rdfs:label	"Will Stratton"@en .
+dbr:World_Wild	rdf:type	dbo:Album ;
+	rdfs:label	"World Wild"@en ;
+	dbo:artist	dbr:Jonny_Jakobsen ;
+	dbo:genre	dbr:Mariachi ,
+		dbr:Bubblegum_dance ,
+		dbr:Eurodance .
+dbr:Wu-Massacre	rdf:type	dbo:Album ;
+	rdfs:label	"Wu-Massacre"@en ;
+	dbo:artist	dbr:Ghostface_Killah ,
+		dbr:Raekwon ,
+		dbr:Method_Man ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:XOBC	rdf:type	dbo:Album ;
+	rdfs:label	"XOBC"@en ;
+	dbo:artist	dbr:Brandi_Carlile ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Yanni_Mexicanisimo	rdf:type	dbo:Album ;
+	rdfs:label	"Yanni Mexicanisimo"@en ;
+	dbo:artist	dbr:Yanni ;
+	dbo:genre	dbr:Latin_American_music .
+<http://dbpedia.org/resource/Bonnie_Raitt_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Bonnie Raitt (album)"@en ;
+	dbo:artist	dbr:Bonnie_Raitt ;
+	dbo:genre	dbr:Rock_music .
+
+dbr:Road_Tested	rdf:type	dbo:Album ;
+	rdfs:label	"Road Tested"@en ;
+	dbo:artist	dbr:Bonnie_Raitt ;
+	dbo:genre	dbr:Rock_music .
+dbr:The_Kick_Inside	rdf:type	dbo:Album ;
+	rdfs:label	"The Kick Inside"@en ;
+	dbo:artist	dbr:Kate_Bush ;
+	dbo:genre	dbr:Baroque_pop ,
+		dbr:Progressive_rock ,
+		dbr:Art_rock .
+dbr:The_Milk-Eyed_Mender	rdf:type	dbo:Album ;
+	rdfs:label	"The Milk-Eyed Mender"@en ;
+	dbo:artist	dbr:Joanna_Newsom ;
+	dbo:genre	dbr:Indie_folk .
+
+dbr:Ant_Banks	rdf:type	dbo:Artist ;
+	rdfs:label	"Ant Banks"@en .
+dbr:Bad_Luck_Streak_in_Dancing_School	rdf:type	dbo:Album ;
+	rdfs:label	"Bad Luck Streak in Dancing School"@en ;
+	dbo:artist	dbr:Warren_Zevon ;
+	dbo:genre	dbr:Rock_music .
+dbr:Day_of_Radiance	rdf:type	dbo:Album ;
+	rdfs:label	"Day of Radiance"@en ;
+	dbo:artist	dbr:Laraaji ;
+	dbo:genre	dbr:World_music ,
+		dbr:Ambient_music .
+dbr:Easy_Listening_for_Iron_Youth	rdf:type	dbo:Album ;
+	rdfs:label	"Easy Listening for Iron Youth"@en ;
+	dbo:artist	dbr:Boyd_Rice ;
+	dbo:genre	dbr:Noise_music .
+<http://dbpedia.org/resource/God\u0027s_Son>	rdf:type	dbo:Album ;
+	rdfs:label	"God's Son"@en ;
+	dbo:artist	dbr:Nas ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Sheryl_Crow_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Sheryl Crow (album)"@en ;
+	dbo:artist	dbr:Sheryl_Crow ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Country_rock ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/Soul_Searchin\u0027>	rdf:type	dbo:Album ;
+	rdfs:label	"Soul Searchin'"@en ;
+	dbo:artist	dbr:Glenn_Frey ;
+	dbo:genre	dbr:Blue-eyed_soul ,
+		dbr:Pop_rock ,
+		dbr:Funk ,
+		dbr:Soft_rock .
+dbr:The_Hissing_of_Summer_Lawns	rdf:type	dbo:Album ;
+	rdfs:label	"The Hissing of Summer Lawns"@en ;
+	dbo:artist	dbr:Joni_Mitchell ;
+	dbo:genre	dbr:Folk_jazz ,
+		dbr:Experimental_music .
+dbr:The_Plateaux_of_Mirror	rdf:type	dbo:Album ;
+	rdfs:label	"The Plateaux of Mirror"@en ;
+	dbo:artist	dbr:Brian_Eno ,
+		dbr:Harold_Budd ;
+	dbo:genre	dbr:Ambient_music .
+dbr:Thursday_Afternoon	rdf:type	dbo:Album ;
+	rdfs:label	"Thursday Afternoon"@en ;
+	dbo:artist	dbr:Brian_Eno ;
+	dbo:genre	dbr:Ambient_music .
+dbr:Blue_Moon_Blue	rdf:type	dbo:Album ;
+	rdfs:label	"Blue Moon Blue"@en ;
+	dbo:artist	dbr:Yukihiro_Takahashi ;
+	dbo:genre	dbr:Synthpop ,
+		dbr:Electronica .
+dbr:Born_Funky_Born_Free	rdf:type	dbo:Album ;
+	rdfs:label	"Born Funky Born Free"@en ;
+	dbo:artist	dbr:Loene_Carmen ;
+	dbo:genre	dbr:Rock_music .
+dbr:Chase_the_Clouds	rdf:type	dbo:Album ;
+	rdfs:label	"Chase the Clouds"@en ;
+	dbo:artist	dbr:Keedy ;
+	dbo:genre	dbr:Pop_rock .
+dbr:God_Bless_America_Again	rdf:type	dbo:Album ;
+	rdfs:label	"God Bless America Again"@en ;
+	dbo:artist	dbr:Loretta_Lynn ;
+	dbo:genre	dbr:Country_music .
+
+dbr:Molecular_Heinosity	rdf:type	dbo:Album ;
+	rdfs:label	"Molecular Heinosity"@en ;
+	dbo:artist	dbr:Derek_Sherinian ;
+	dbo:genre	dbr:Progressive_metal ,
+		dbr:Instrumental_rock .
+<http://dbpedia.org/resource/Padded_Room_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Padded Room (album)"@en ;
+	dbo:artist	dbr:Joe_Budden ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Solo_Acoustic,_Vol._1>	rdf:type	dbo:Album ;
+	rdfs:label	"Solo Acoustic, Vol. 1"@en ;
+	dbo:artist	dbr:Jackson_Browne ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/Sonny_Rollins,_Vol._2>	rdf:type	dbo:Album ;
+	rdfs:label	"Sonny Rollins, Vol. 2"@en ;
+	dbo:artist	dbr:Sonny_Rollins ;
+	dbo:genre	dbr:Hard_bop ,
+		dbr:Jazz .
+dbr:The_Best_of_Dolly_Parton	rdf:type	dbo:Album ;
+	rdfs:label	"The Best of Dolly Parton"@en ;
+	dbo:artist	dbr:Dolly_Parton ;
+	dbo:genre	dbr:Country_music .
+dbr:The_Flow_of_X	rdf:type	dbo:Album ;
+	rdfs:label	"The Flow of X"@en ;
+	dbo:artist	dbr:Matthew_Shipp ;
+	dbo:genre	dbr:Jazz .
+dbr:The_Huge_Hefner_Chronicles	rdf:type	dbo:Album ;
+	rdfs:label	"The Huge Hefner Chronicles"@en ;
+	dbo:artist	dbr:Diamond_D ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:The_Rise_and_Fall_of_Charlie_Parker	rdf:type	dbo:Album ;
+	rdfs:label	"The Rise and Fall of Charlie Parker"@en ;
+	dbo:artist	dbr:Charlie_Parker ;
+	dbo:genre	dbr:Jazz .
+dbr:Times_Are_Changing	rdf:type	dbo:Album ;
+	rdfs:label	"Times Are Changing"@en ;
+	dbo:artist	dbr:Freddie_Hubbard ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Too_Late_to_Worry_-_Too_Blue_to_Cry_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Too Late to Worry - Too Blue to Cry (album)"@en ;
+	dbo:artist	dbr:Glen_Campbell ;
+	dbo:genre	dbr:Country_music .
+dbr:We_Are_in_Love	rdf:type	dbo:Album ;
+	rdfs:label	"We Are in Love"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Harry_Connick,_Jr.> ;
+	dbo:genre	dbr:Big_band .
+<http://dbpedia.org/resource/You_Want_Some_of_This%3F>	rdf:type	dbo:Album ;
+	rdfs:label	"You Want Some of This?"@en ;
+	dbo:artist	dbr:Jon_Lajoie ;
+	dbo:genre	dbr:Comedy_rock ,
+		dbr:Comedy_music .
+dbr:A_State_of_Trance_2005	rdf:type	dbo:Album ;
+	rdfs:label	"A State of Trance 2005"@en ;
+	dbo:artist	dbr:Armin_van_Buuren ;
+	dbo:genre	dbr:Progressive_house ,
+		<http://dbpedia.org/resource/Trance_(music_genre)> .
+dbr:Adventures_on_the_Wheels_of_Steel	rdf:type	dbo:Album ;
+	rdfs:label	"Adventures on the Wheels of Steel"@en ;
+	dbo:artist	dbr:Melle_Mel ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Afraid_of_Ghosts	rdf:type	dbo:Album ;
+	rdfs:label	"Afraid of Ghosts"@en ;
+	dbo:artist	dbr:Butch_Walker ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Alternative_rock ,
+		dbr:Folk_rock .
+dbr:Ali_e_radici	rdf:type	dbo:Album ;
+	rdfs:label	"Ali e radici"@en ;
+	dbo:artist	dbr:Eros_Ramazzotti ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Pop_music .
+dbr:An_Ancient_Muse	rdf:type	dbo:Album ;
+	rdfs:label	"An Ancient Muse"@en ;
+	dbo:artist	dbr:Loreena_McKennitt ;
+	dbo:genre	dbr:World_music .
+dbr:April_Moon	rdf:type	dbo:Album ;
+	rdfs:label	"April Moon"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Sam_Brown_(singer)> ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Pop_music .
+<http://dbpedia.org/resource/Azure_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Azure (album)"@en ;
+	dbo:artist	dbr:Art_Farmer ;
+	dbo:genre	dbr:Jazz .
+dbr:Based_on_Happy_Times	rdf:type	dbo:Album ;
+	rdfs:label	"Based on Happy Times"@en ;
+	dbo:artist	dbr:Tommy_Keene ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Power_pop .
+dbr:Bert_van_den_Brink_Invites_Clare_Fischer	rdf:type	dbo:Album ;
+	rdfs:label	"Bert van den Brink Invites Clare Fischer"@en ;
+	dbo:artist	dbr:Clare_Fischer ;
+	dbo:genre	dbr:Jazz .
+dbr:Birth_and_Rebirth	rdf:type	dbo:Album ;
+	rdfs:label	"Birth and Rebirth"@en ;
+	dbo:artist	dbr:Max_Roach ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Buckwild_Presents...>	rdf:type	dbo:Album ;
+	rdfs:label	"Buckwild Presents..."@en ;
+	dbo:artist	dbr:Buckwild ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Carrie_Rodriguez_Live_in_Louisville	rdf:type	dbo:Album ;
+	rdfs:label	"Carrie Rodriguez Live in Louisville"@en ;
+	dbo:artist	dbr:Carrie_Rodriguez ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Blues_rock ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/City_of_Light_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"City of Light (album)"@en ;
+	dbo:artist	dbr:Bill_Laswell ;
+	dbo:genre	dbr:Ambient_music .
+dbr:Confessions_of_a_Nice_Girl	rdf:type	dbo:Album ;
+	rdfs:label	"Confessions of a Nice Girl"@en ;
+	dbo:artist	dbr:Katie_Armiger ;
+	dbo:genre	dbr:Country_music .
+dbr:Curtis_Fuller_with_Red_Garland	rdf:type	dbo:Album ;
+	rdfs:label	"Curtis Fuller with Red Garland"@en ;
+	dbo:artist	dbr:Curtis_Fuller ;
+	dbo:genre	dbr:Jazz .
+dbr:Dean_Martin_Hits_Again	rdf:type	dbo:Album ;
+	rdfs:label	"Dean Martin Hits Again"@en ;
+	dbo:artist	dbr:Dean_Martin ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Traditional_pop_music .
+dbr:Dub_Terror_Exhaust	rdf:type	dbo:Album ;
+	rdfs:label	"Dub Terror Exhaust"@en ;
+	dbo:artist	dbr:Bill_Laswell ;
+	dbo:genre	dbr:Ambient_music .
+<http://dbpedia.org/resource/Eastward_Ho!_Harold_Land_in_New_York>	rdf:type	dbo:Album ;
+	rdfs:label	"Eastward Ho! Harold Land in New York"@en ;
+	dbo:artist	dbr:Harold_Land ;
+	dbo:genre	dbr:Jazz .
+dbr:En_la_Luna	rdf:type	dbo:Album ;
+	rdfs:label	"En la Luna"@en ;
+	dbo:artist	dbr:Reyli ;
+	dbo:genre	dbr:Latin_pop .
+dbr:Espejos_azules	rdf:type	dbo:Album ;
+	rdfs:label	"Espejos azules"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Pablo_Ruiz_(singer)> ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Famous_(Marques_Houston_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Famous (Marques Houston album)"@en ;
+	dbo:artist	dbr:Marques_Houston ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> .
+<http://dbpedia.org/resource/Flying_Colours_(Chris_de_Burgh_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Flying Colours (Chris de Burgh album)"@en ;
+	dbo:artist	dbr:Chris_de_Burgh ;
+	dbo:genre	dbr:Pop_music .
+dbr:Forms_of_Paper	rdf:type	dbo:Album ;
+	rdfs:label	"Forms of Paper"@en ;
+	dbo:artist	dbr:Steve_Roden ;
+	dbo:genre	<http://dbpedia.org/resource/Lowercase_(music)> .
+dbr:From_Here_to_the_Hearse	rdf:type	dbo:Album ;
+	rdfs:label	"From Here to the Hearse"@en ;
+	dbo:artist	dbr:Wednesday_13 ;
+	dbo:genre	dbr:Horror_punk ,
+		dbr:Glam_metal ,
+		dbr:Outlaw_country ,
+		dbr:Hard_rock .
+dbr:Fullblast	rdf:type	dbo:Album ;
+	rdfs:label	"Fullblast"@en ;
+	dbo:artist	dbr:Kiko_Loureiro ;
+	dbo:genre	dbr:Progressive_metal ,
+		dbr:Neoclassical_metal ,
+		dbr:Heavy_metal_music .
+dbr:Godmorgon_Sverige	rdf:type	dbo:Album ;
+	rdfs:label	"Godmorgon Sverige"@en ;
+	dbo:artist	dbr:Mauro_Scocco ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Greatest_Hits_(Patty_Loveless_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greatest Hits (Patty Loveless album)"@en ;
+	dbo:artist	dbr:Patty_Loveless ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Green_Method_(Midori_no_Chuuyou_Chitsujyo_Kei)>	rdf:type	dbo:Album ;
+	rdfs:label	"Green Method (Midori no Chuuyou Chitsujyo Kei)"@en ;
+	dbo:artist	dbr:Daisuke_Asakura ;
+	dbo:genre	dbr:Electronica ,
+		dbr:Pop_music ,
+		dbr:Techno ,
+		dbr:Synthpop .
+dbr:Hip_Hop_Is_Dead	rdf:type	dbo:Album ;
+	rdfs:label	"Hip Hop Is Dead"@en ;
+	dbo:artist	dbr:Nas ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/I\u0027m_Not_F4>	rdf:type	dbo:Album ;
+	rdfs:label	"I'm Not F4"@en ;
+	dbo:artist	dbr:Vic_Chou ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Mandopop .
+<http://dbpedia.org/resource/I_Cry,_I_Smile>	rdf:type	dbo:Album ;
+	rdfs:label	"I Cry, I Smile"@en ;
+	dbo:artist	dbr:Narada_Michael_Walden ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Rhythm_and_blues .
+<http://dbpedia.org/resource/In_the_House_of_Stone_and_Light_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"In the House of Stone and Light (album)"@en ;
+	dbo:artist	dbr:Martin_Page ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Soft_rock .
+dbr:Le_dimensioni_del_mio_caos	rdf:type	dbo:Album ;
+	rdfs:label	"Le dimensioni del mio caos"@en ;
+	dbo:artist	dbr:Caparezza ;
+	dbo:genre	dbr:Heavy_metal_music ,
+		dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Le_disque_d\u0027or_de_Dalida>	rdf:type	dbo:Album ;
+	rdfs:label	"Le disque d'or de Dalida"@en ;
+	dbo:artist	dbr:Dalida ;
+	dbo:genre	dbr:Exotica ,
+		dbr:Pop_music ,
+		dbr:World_music .
+dbr:Long_Stretch_of_Lonesome	rdf:type	dbo:Album ;
+	rdfs:label	"Long Stretch of Lonesome"@en ;
+	dbo:artist	dbr:Patty_Loveless ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/M.Y.O.B._(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"M.Y.O.B. (album)"@en ;
+	dbo:artist	dbr:Debbie_Gibson ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Dance-pop ,
+		dbr:Pop_rock ,
+		dbr:Soul_music .
+dbr:Michael_Franks_with_Crossfire_Live	rdf:type	dbo:Album ;
+	rdfs:label	"Michael Franks with Crossfire Live"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Michael_Franks_(musician)> ;
+	dbo:genre	dbr:Jazz .
+dbr:Mind_Raft	rdf:type	dbo:Album ;
+	rdfs:label	"Mind Raft"@en ;
+	dbo:artist	dbr:Angel_Deradoorian ;
+	dbo:genre	dbr:Experimental_rock .
+<http://dbpedia.org/resource/Nancy_&_Lee>	rdf:type	dbo:Album ;
+	rdfs:label	"Nancy & Lee"@en ;
+	dbo:artist	dbr:Nancy_Sinatra ,
+		dbr:Lee_Hazlewood ;
+	dbo:genre	dbr:Psychedelic_rock .
+<http://dbpedia.org/resource/Nigga_Deep_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Nigga Deep (album)"@en ;
+	dbo:artist	dbr:Brotha_Lynch_Hung ;
+	dbo:genre	dbr:Horrorcore ,
+		dbr:G-funk ,
+		dbr:Underground_hip_hop ,
+		dbr:West_Coast_hip_hop ,
+		dbr:Gangsta_rap .
+dbr:No_World_Order	rdf:type	dbo:Album ;
+	rdfs:label	"No World Order"@en ;
+	dbo:artist	dbr:Todd_Rundgren ;
+	dbo:genre	dbr:Pop_rock ,
+		dbr:Electronica .
+<http://dbpedia.org/resource/Peace_(Jim_Brickman_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Peace (Jim Brickman album)"@en ;
+	dbo:artist	dbr:Jim_Brickman ;
+	dbo:genre	dbr:New-age_music ,
+		dbr:Pop_music ,
+		dbr:Jazz .
+
+dbr:Rapper_Gone_Bad	rdf:type	dbo:Album ;
+	rdfs:label	"Rapper Gone Bad"@en ;
+	dbo:artist	dbr:Mac_Dre ;
+	dbo:genre	dbr:West_Coast_hip_hop ,
+		dbr:Gangsta_rap .
+<http://dbpedia.org/resource/Rob_Lynch_(EP)>	rdf:type	dbo:Album ;
+	rdfs:label	"Rob Lynch (EP)"@en ;
+	dbo:artist	dbr:Rob_Lynch ;
+	dbo:genre	dbr:Indie_rock ,
+		dbr:Alternative_rock .
+<http://dbpedia.org/resource/Rockin\u0027_&_Romance>	rdf:type	dbo:Album ;
+	rdfs:label	"Rockin' & Romance"@en ;
+	dbo:artist	dbr:Jonathan_Richman ;
+	dbo:genre	dbr:Rock_and_roll ,
+		dbr:Doo-wop .
+dbr:Self_Record	rdf:type	dbo:Album ;
+	rdfs:label	"Self Record"@en ;
+	dbo:artist	dbr:Justin_Vernon ;
+	dbo:genre	dbr:Minimal_music ,
+		dbr:Indie_folk .
+dbr:Shadows_and_Dust	rdf:type	dbo:Album ;
+	rdfs:label	"Shadows and Dust"@en ;
+	dbo:artist	dbr:Lene_Lovich ;
+	dbo:genre	dbr:New_wave_music .
+dbr:Sleep_Through_the_Static	rdf:type	dbo:Album ;
+	rdfs:label	"Sleep Through the Static"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Jack_Johnson_(musician)> ;
+	dbo:genre	dbr:Soft_rock ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/Studio_Sessions_1957_&_1962>	rdf:type	dbo:Album ;
+	rdfs:label	"Studio Sessions 1957 & 1962"@en ;
+	dbo:artist	dbr:Duke_Ellington ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Sweet_&_Sour_Tears>	rdf:type	dbo:Album ;
+	rdfs:label	"Sweet & Sour Tears"@en ;
+	dbo:artist	dbr:Ray_Charles ;
+	dbo:genre	dbr:Southern_soul ,
+		dbr:Rhythm_and_blues ,
+		dbr:Soul_music .
+dbr:The_Best_of_Yolanda_Adams	rdf:type	dbo:Album ;
+	rdfs:label	"The Best of Yolanda Adams"@en ;
+	dbo:artist	dbr:Yolanda_Adams ;
+	dbo:genre	dbr:Gospel_music .
+dbr:The_Famous_1938_Carnegie_Hall_Jazz_Concert	rdf:type	dbo:Album ;
+	rdfs:label	"The Famous 1938 Carnegie Hall Jazz Concert"@en ;
+	dbo:artist	dbr:Benny_Goodman ;
+	dbo:genre	dbr:Jazz .
+dbr:The_Mourning_of_a_Star	rdf:type	dbo:Album ;
+	rdfs:label	"The Mourning of a Star"@en ;
+	dbo:artist	dbr:Keith_Jarrett ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/The_New_Testament_(The_Truth)>	rdf:type	dbo:Album ;
+	rdfs:label	"The New Testament (The Truth)"@en ;
+	dbo:artist	dbr:Suga_Free ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:The_Sound_of_Wilson_Pickett	rdf:type	dbo:Album ;
+	rdfs:label	"The Sound of Wilson Pickett"@en ;
+	dbo:artist	dbr:Wilson_Pickett ;
+	dbo:genre	dbr:Rhythm_and_blues .
+dbr:The_Tender_Storm	rdf:type	dbo:Album ;
+	rdfs:label	"The Tender Storm"@en ;
+	dbo:artist	dbr:Eddie_Harris ;
+	dbo:genre	dbr:Jazz .
+dbr:Trust_It	rdf:type	dbo:Album ;
+	rdfs:label	"Trust It"@en ;
+	dbo:artist	dbr:Junior_Jack ;
+	dbo:genre	dbr:House_music .
+dbr:Under_the_Flag	rdf:type	dbo:Album ;
+	rdfs:label	"Under the Flag"@en ;
+	dbo:artist	dbr:Fad_Gadget ;
+	dbo:genre	dbr:New_wave_music .
+dbr:Understand_This	rdf:type	dbo:Album ;
+	rdfs:label	"Understand This"@en ;
+	dbo:artist	dbr:Grand_Puba ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Volume_9:_I_See_You_Hearin\u0027_Me>	rdf:type	dbo:Album ;
+	rdfs:label	"Volume 9: I See You Hearin' Me"@en ;
+	dbo:artist	dbr:The_Desert_Sessions ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/Wild_Flower_(Hubert_Laws_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Wild Flower (Hubert Laws album)"@en ;
+	dbo:artist	dbr:Hubert_Laws ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/You\u0027ve_Got_to_Laugh>	rdf:type	dbo:Album ;
+	rdfs:label	"You've Got to Laugh"@en ;
+	dbo:artist	dbr:Nik_Kershaw ;
+	dbo:genre	dbr:Rock_music .
+<http://dbpedia.org/resource/12_Songs_(Neil_Diamond_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"12 Songs (Neil Diamond album)"@en ;
+	dbo:artist	dbr:Neil_Diamond ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Rock_music .
+dbr:A_Brand_New_Me	rdf:type	dbo:Album ;
+	rdfs:label	"A Brand New Me"@en ;
+	dbo:artist	dbr:Dusty_Springfield ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Pop_music .
+dbr:A_Monastic_Trio	rdf:type	dbo:Album ;
+	rdfs:label	"A Monastic Trio"@en ;
+	dbo:artist	dbr:Alice_Coltrane ;
+	dbo:genre	dbr:Jazz .
+
+<http://dbpedia.org/resource/Big_Science_(Laurie_Anderson_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Big Science (Laurie Anderson album)"@en ;
+	dbo:artist	dbr:Laurie_Anderson ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Avant-garde_music ,
+		dbr:Experimental_music .
+dbr:Boy_in_da_Corner	rdf:type	dbo:Album ;
+	rdfs:label	"Boy in da Corner"@en ;
+	dbo:artist	dbr:Dizzee_Rascal ;
+	dbo:genre	<http://dbpedia.org/resource/Grime_(music)> .
+<http://dbpedia.org/resource/Hawks_&_Doves>	rdf:type	dbo:Album ;
+	rdfs:label	"Hawks & Doves"@en ;
+	dbo:artist	dbr:Neil_Young ;
+	dbo:genre	dbr:Country_rock ,
+		dbr:Rock_music ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/Ironman_(Ghostface_Killah_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Ironman (Ghostface Killah album)"@en ;
+	dbo:artist	dbr:Ghostface_Killah ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Joe\u0027s_Corsage>	rdf:type	dbo:Album ;
+	rdfs:label	"Joe's Corsage"@en ;
+	dbo:artist	dbr:Frank_Zappa ;
+	dbo:genre	dbr:Rock_music .
+dbr:Live_at_Earls_Court	rdf:type	dbo:Album ;
+	rdfs:label	"Live at Earls Court"@en ;
+	dbo:artist	dbr:Morrissey ;
+	dbo:genre	dbr:Alternative_rock .
+dbr:Maghroumeh	rdf:type	dbo:Album ;
+	rdfs:label	"Maghroumeh"@en ;
+	dbo:artist	dbr:Najwa_Karam ;
+	dbo:genre	dbr:Al_Jeel ,
+		dbr:Pop_music .
+dbr:Miles_of_Aisles	rdf:type	dbo:Album ;
+	rdfs:label	"Miles of Aisles"@en ;
+	dbo:artist	dbr:Joni_Mitchell ;
+	dbo:genre	dbr:Folk_rock ,
+		dbr:Folk_jazz .
+dbr:Plays_Live	rdf:type	dbo:Album ;
+	rdfs:label	"Plays Live"@en ;
+	dbo:artist	dbr:Peter_Gabriel ;
+	dbo:genre	dbr:Experimental_rock ,
+		dbr:Worldbeat ,
+		dbr:Progressive_rock .
+dbr:Press_to_Play	rdf:type	dbo:Album ;
+	rdfs:label	"Press to Play"@en ;
+	dbo:artist	dbr:Paul_McCartney ;
+	dbo:genre	dbr:Soft_rock ,
+		dbr:Hard_rock ,
+		dbr:New_wave_music ,
+		dbr:Rock_music ,
+		dbr:Pop_rock ,
+		dbr:Synthpop .
+<http://dbpedia.org/resource/Ptah,_the_El_Daoud>	rdf:type	dbo:Album ;
+	rdfs:label	"Ptah, the El Daoud"@en ;
+	dbo:artist	dbr:Alice_Coltrane ;
+	dbo:genre	dbr:Jazz .
+
+<http://dbpedia.org/resource/Something\u0027s_Going_On>	rdf:type	dbo:Album ;
+	rdfs:label	"Something's Going On"@en ;
+	dbo:artist	dbr:Anni-Frid_Lyngstad ;
+	dbo:genre	dbr:Pop_music .
+<http://dbpedia.org/resource/Starr_Struck:_Best_of_Ringo_Starr,_Vol._2>	rdf:type	dbo:Album ;
+	rdfs:label	"Starr Struck: Best of Ringo Starr, Vol. 2"@en ;
+	dbo:artist	dbr:Ringo_Starr ;
+	dbo:genre	dbr:Rock_and_roll .
+dbr:Stop_and_Smell_the_Roses	rdf:type	dbo:Album ;
+	rdfs:label	"Stop and Smell the Roses"@en ;
+	dbo:artist	dbr:Ringo_Starr ;
+	dbo:genre	dbr:Rock_music .
+dbr:Street_Talk	rdf:type	dbo:Album ;
+	rdfs:label	"Street Talk"@en ;
+	dbo:artist	dbr:Steve_Perry ;
+	dbo:genre	dbr:Pop_rock .
+dbr:The_Best_of_Morrissey	rdf:type	dbo:Album ;
+	rdfs:label	"The Best of Morrissey"@en ;
+	dbo:artist	dbr:Morrissey ;
+	dbo:genre	dbr:Alternative_rock .
+dbr:The_Grace_EPs	rdf:type	dbo:Album ;
+	rdfs:label	"The Grace EPs"@en ;
+	dbo:artist	dbr:Jeff_Buckley ;
+	dbo:genre	dbr:Alternative_rock .
+<http://dbpedia.org/resource/Tom_McRae_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Tom McRae (album)"@en ;
+	dbo:artist	dbr:Tom_McRae ;
+	dbo:genre	dbr:Rock_music .
+dbr:West_Coast_Resurrection	rdf:type	dbo:Album ;
+	rdfs:label	"West Coast Resurrection"@en ;
+	dbo:artist	<http://dbpedia.org/resource/The_Game_(rapper)> ;
+	dbo:genre	dbr:Gangsta_rap ,
+		dbr:West_Coast_hip_hop .
+dbr:Zooma	rdf:type	dbo:Album ;
+	rdfs:label	"Zooma"@en ;
+	dbo:artist	<http://dbpedia.org/resource/John_Paul_Jones_(musician)> ;
+	dbo:genre	dbr:Heavy_metal_music ,
+		dbr:Progressive_rock ,
+		dbr:Instrumental_rock .
+<http://dbpedia.org/resource/Amarantine_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Amarantine (album)"@en ;
+	dbo:artist	dbr:Enya ;
+	dbo:genre	dbr:New-age_music .
+
+dbr:Future_Development	rdf:type	dbo:Album ;
+	rdfs:label	"Future Development"@en ;
+	dbo:artist	dbr:Del_the_Funky_Homosapien ;
+	dbo:genre	dbr:Funk ,
+		dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Laugh_Now,_Cry_Later>	rdf:type	dbo:Album ;
+	rdfs:label	"Laugh Now, Cry Later"@en ;
+	dbo:artist	dbr:Ice_Cube ;
+	dbo:genre	dbr:Gangsta_rap ,
+		dbr:West_Coast_hip_hop .
+dbr:Mirror_Blue	rdf:type	dbo:Album ;
+	rdfs:label	"Mirror Blue"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Richard_Thompson_(musician)> ;
+	dbo:genre	dbr:Alternative_rock ,
+		dbr:Folk_rock .
+<http://dbpedia.org/resource/November\u0027s_Chopin>	rdf:type	dbo:Album ;
+	rdfs:label	"November's Chopin"@en ;
+	dbo:artist	dbr:Jay_Chou ;
+	dbo:genre	dbr:Mandopop .
+dbr:The_Chrono_Show	rdf:type	dbo:Album ;
+	rdfs:label	"The Chrono Show"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Richard_Thompson_(musician)> ;
+	dbo:genre	dbr:Rock_and_roll .
+<http://dbpedia.org/resource/Timbrel_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Timbrel (album)"@en ;
+	dbo:artist	dbr:Terl_Bryant ;
+	dbo:genre	dbr:Progressive_rock ,
+		dbr:Christian_rock .
+dbr:Advisory_Committee	rdf:type	dbo:Album ;
+	rdfs:label	"Advisory Committee"@en ;
+	dbo:artist	dbr:Mirah ;
+	dbo:genre	dbr:Indie_rock .
+dbr:Hell_Among_the_Yearlings	rdf:type	dbo:Album ;
+	rdfs:label	"Hell Among the Yearlings"@en ;
+	dbo:artist	dbr:Gillian_Welch ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Bluegrass_music .
+<http://dbpedia.org/resource/Mock_Tudor_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Mock Tudor (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Richard_Thompson_(musician)> ;
+	dbo:genre	dbr:Folk_rock ,
+		dbr:Electric_folk .
+dbr:Semi-Detached_Mock_Tudor	rdf:type	dbo:Album ;
+	rdfs:label	"Semi-Detached Mock Tudor"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Richard_Thompson_(musician)> ;
+	dbo:genre	dbr:Rock_and_roll .
+dbr:The_Trouble_with_Being_Myself	rdf:type	dbo:Album ;
+	rdfs:label	"The Trouble with Being Myself"@en ;
+	dbo:artist	dbr:Macy_Gray ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Soul_music ,
+		dbr:Neo_soul .
+dbr:Only_a_Woman_Like_You	rdf:type	dbo:Album ;
+	rdfs:label	"Only a Woman Like You"@en ;
+	dbo:artist	dbr:Michael_Bolton ;
+	dbo:genre	dbr:Pop_music .
+
+<http://dbpedia.org/resource/50_Years_of_Hits>	rdf:type	dbo:Album ;
+	rdfs:label	"50 Years of Hits"@en ;
+	dbo:artist	dbr:George_Jones ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Extrapolation_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Extrapolation (album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/John_McLaughlin_(musician)> ;
+	dbo:genre	dbr:Post-bop ,
+		dbr:Jazz ,
+		dbr:Jazz_fusion .
+dbr:Facing_the_Animal	rdf:type	dbo:Album ;
+	rdfs:label	"Facing the Animal"@en ;
+	dbo:artist	dbr:Yngwie_Malmsteen ;
+	dbo:genre	dbr:Neoclassical_metal ,
+		dbr:Heavy_metal_music .
+dbr:Guitar_Town	rdf:type	dbo:Album ;
+	rdfs:label	"Guitar Town"@en ;
+	dbo:artist	dbr:Steve_Earle ;
+	dbo:genre	dbr:Rockabilly .
+dbr:No_Place_Like_BKLYN	rdf:type	dbo:Album ;
+	rdfs:label	"No Place Like BKLYN"@en ;
+	dbo:artist	dbr:Jeannie_Ortega ;
+	dbo:genre	dbr:Reggaeton ,
+		dbr:Pop_music ,
+		dbr:Hip_hop_music ,
+		<http://dbpedia.org/resource/Contemporary_R&B> .
+dbr:Silk_Degrees	rdf:type	dbo:Album ;
+	rdfs:label	"Silk Degrees"@en ;
+	dbo:artist	dbr:Boz_Scaggs ;
+	dbo:genre	dbr:Blue-eyed_soul .
+dbr:Streetnoise	rdf:type	dbo:Album ;
+	rdfs:label	"Streetnoise"@en ;
+	dbo:artist	dbr:Brian_Auger ,
+		dbr:Julie_Driscoll ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Progressive_rock .
+<http://dbpedia.org/resource/War_&_Peace_Vol._1_(The_War_Disc)>	rdf:type	dbo:Album ;
+	rdfs:label	"War & Peace Vol. 1 (The War Disc)"@en ;
+	dbo:artist	dbr:Ice_Cube ;
+	dbo:genre	dbr:Gangsta_rap ,
+		dbr:Rap_rock ,
+		dbr:G-funk ,
+		dbr:West_Coast_hip_hop .
+<http://dbpedia.org/resource/Zabalaza_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Zabalaza (album)"@en ;
+	dbo:artist	dbr:Thandiswa_Mazwai ;
+	dbo:genre	dbr:Kwaito .
+<http://dbpedia.org/resource/Somewhere,_Anywhere>	rdf:type	dbo:Album ;
+	rdfs:label	"Somewhere, Anywhere"@en ;
+	dbo:artist	dbr:Sally_Seltmann ;
+	dbo:genre	dbr:Indie_rock .
+dbr:How_to_Make_Gravy	rdf:type	dbo:Album ;
+	rdfs:label	"How to Make Gravy"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Paul_Kelly_(Australian_musician)> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rock_music .
+<http://dbpedia.org/resource/Bobbie_Cryner_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Bobbie Cryner (album)"@en ;
+	dbo:artist	dbr:Bobbie_Cryner ;
+	dbo:genre	dbr:Country_music .
+dbr:Brasswind	rdf:type	dbo:Album ;
+	rdfs:label	"Brasswind"@en ;
+	dbo:artist	dbr:Gene_Ammons ;
+	dbo:genre	dbr:Jazz .
+dbr:Connie_in_the_Country	rdf:type	dbo:Album ;
+	rdfs:label	"Connie in the Country"@en ;
+	dbo:artist	dbr:Connie_Smith ;
+	dbo:genre	dbr:Country_music .
+dbr:George_Russell_Sextet_at_the_Five_Spot	rdf:type	dbo:Album ;
+	rdfs:label	"George Russell Sextet at the Five Spot"@en ;
+	dbo:artist	<http://dbpedia.org/resource/George_Russell_(composer)> ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Kirk\u0027s_Work>	rdf:type	dbo:Album ;
+	rdfs:label	"Kirk's Work"@en ;
+	dbo:artist	dbr:Rahsaan_Roland_Kirk ;
+	dbo:genre	dbr:Jazz .
+dbr:Kirkatron	rdf:type	dbo:Album ;
+	rdfs:label	"Kirkatron"@en ;
+	dbo:artist	dbr:Rahsaan_Roland_Kirk ;
+	dbo:genre	dbr:Jazz .
+dbr:Sensitive_Sources	rdf:type	dbo:Album ;
+	rdfs:label	"Sensitive Sources"@en ;
+	dbo:artist	dbr:Toshinori_Yonekura ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Pop_music .
+dbr:Strange_Strings	rdf:type	dbo:Album ;
+	rdfs:label	"Strange Strings"@en ;
+	dbo:artist	dbr:Sun_Ra ;
+	dbo:genre	dbr:Jazz .
+dbr:Sunshine_and_Rain	rdf:type	dbo:Album ;
+	rdfs:label	"Sunshine and Rain"@en ;
+	dbo:artist	dbr:Connie_Smith ;
+	dbo:genre	dbr:Country_music .
+
+<http://dbpedia.org/resource/The_Return_of_the_5000_Lb._Man>	rdf:type	dbo:Album ;
+	rdfs:label	"The Return of the 5000 Lb. Man"@en ;
+	dbo:artist	dbr:Rahsaan_Roland_Kirk ;
+	dbo:genre	dbr:Jazz .
+dbr:A_Hard_Act_to_Follow	rdf:type	dbo:Album ;
+	rdfs:label	"A Hard Act to Follow"@en ;
+	dbo:artist	dbr:Keith_Whitley ;
+	dbo:genre	dbr:Country_music .
+dbr:Akisakila	rdf:type	dbo:Album ;
+	rdfs:label	"Akisakila"@en ;
+	dbo:artist	dbr:Cecil_Taylor ;
+	dbo:genre	dbr:Free_jazz .
+dbr:And_the_Word_Became_Flesh	rdf:type	dbo:Album ;
+	rdfs:label	"And the Word Became Flesh"@en ;
+	dbo:artist	dbr:Professor_Griff ;
+	dbo:genre	dbr:Hardcore_hip_hop ,
+		dbr:Political_hip_hop .
+<http://dbpedia.org/resource/Aqui,_Ali,_Em_Qualquer_Lugar>	rdf:type	dbo:Album ;
+	rdfs:label	"Aqui, Ali, Em Qualquer Lugar"@en ;
+	dbo:artist	dbr:Rita_Lee ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Art_Forms_of_Dimensions_Tomorrow	rdf:type	dbo:Album ;
+	rdfs:label	"Art Forms of Dimensions Tomorrow"@en ;
+	dbo:artist	dbr:Sun_Ra ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Big_Dreams_&_High_Hopes>	rdf:type	dbo:Album ;
+	rdfs:label	"Big Dreams & High Hopes"@en ;
+	dbo:artist	dbr:Jack_Ingram ;
+	dbo:genre	dbr:Country_music .
+
+<http://dbpedia.org/resource/Connie_Smith_(1965_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Connie Smith (1965 album)"@en ;
+	dbo:artist	dbr:Connie_Smith ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Don_Giovanni_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Don Giovanni (album)"@en ;
+	dbo:artist	dbr:Lucio_Battisti ;
+	dbo:genre	dbr:Synthpop .
+dbr:Evolution_of_a_Man	rdf:type	dbo:Album ;
+	rdfs:label	"Evolution of a Man"@en ;
+	dbo:artist	dbr:Brian_McKnight ;
+	dbo:genre	<http://dbpedia.org/resource/Contemporary_R&B> ,
+		dbr:Soul_music .
+dbr:For_Olim	rdf:type	dbo:Album ;
+	rdfs:label	"For Olim"@en ;
+	dbo:artist	dbr:Cecil_Taylor ;
+	dbo:genre	dbr:Free_jazz .
+<http://dbpedia.org/resource/Greatest_Hits_(Scarface_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Greatest Hits (Scarface album)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Scarface_(rapper)> ;
+	dbo:genre	dbr:Southern_hip_hop ,
+		dbr:Gangsta_rap .
+
+<http://dbpedia.org/resource/Human_Technology_(EP)>	rdf:type	dbo:Album ;
+	rdfs:label	"Human Technology (EP)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/BT_(musician)> ;
+	dbo:genre	dbr:Techno ,
+		dbr:Electronica .
+dbr:Il_mio_canto_libero	rdf:type	dbo:Album ;
+	rdfs:label	"Il mio canto libero"@en ;
+	dbo:artist	dbr:Lucio_Battisti ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Il_nostro_caro_angelo	rdf:type	dbo:Album ;
+	rdfs:label	"Il nostro caro angelo"@en ;
+	dbo:artist	dbr:Lucio_Battisti ;
+	dbo:genre	dbr:Pop_rock .
+dbr:Jazz_Advance	rdf:type	dbo:Album ;
+	rdfs:label	"Jazz Advance"@en ;
+	dbo:artist	dbr:Cecil_Taylor ;
+	dbo:genre	dbr:Jazz .
+dbr:Made_in_Love	rdf:type	dbo:Album ;
+	rdfs:label	"Made in Love"@en ;
+	dbo:artist	dbr:Zazie ;
+	dbo:genre	dbr:Pop_music .
+dbr:Matrikula	rdf:type	dbo:Album ;
+	rdfs:label	"Matrikula"@en ;
+	dbo:artist	dbr:Gloc-9 ;
+	dbo:genre	dbr:Pinoy_hip_hop .
+dbr:Opening_the_Caravan_of_Dreams	rdf:type	dbo:Album ;
+	rdfs:label	"Opening the Caravan of Dreams"@en ;
+	dbo:artist	dbr:Ornette_Coleman ;
+	dbo:genre	dbr:Jazz-funk ,
+		dbr:Free_jazz .
+dbr:Prepare_Thyself_to_Deal_with_a_Miracle	rdf:type	dbo:Album ;
+	rdfs:label	"Prepare Thyself to Deal with a Miracle"@en ;
+	dbo:artist	dbr:Rahsaan_Roland_Kirk ;
+	dbo:genre	dbr:Jazz .
+
+dbr:Secrets_of_the_Sun	rdf:type	dbo:Album ;
+	rdfs:label	"Secrets of the Sun"@en ;
+	dbo:artist	dbr:Sun_Ra ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Stand_(In_the_Light)>	rdf:type	dbo:Album ;
+	rdfs:label	"Stand (In the Light)"@en ;
+	dbo:artist	dbr:James_Ingram ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Gospel_music ,
+		dbr:Quiet_storm .
+dbr:Sus_Baladas	rdf:type	dbo:Album ;
+	rdfs:label	"Sus Baladas"@en ;
+	dbo:artist	dbr:Benny_Ibarra ;
+	dbo:genre	dbr:Pop_music .
+dbr:The_Best_of_Freda_Payne	rdf:type	dbo:Album ;
+	rdfs:label	"The Best of Freda Payne"@en ;
+	dbo:artist	dbr:Freda_Payne ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Rhythm_and_blues .
+dbr:The_Eighth	rdf:type	dbo:Album ;
+	rdfs:label	"The Eighth"@en ;
+	dbo:artist	dbr:Cecil_Taylor ;
+	dbo:genre	dbr:Free_jazz .
+dbr:The_End_of_Fear	rdf:type	dbo:Album ;
+	rdfs:label	"The End of Fear"@en ;
+	dbo:artist	dbr:Josh_Doyle ;
+	dbo:genre	dbr:Alternative_rock .
+dbr:The_Great_Concert_of_Cecil_Taylor	rdf:type	dbo:Album ;
+	rdfs:label	"The Great Concert of Cecil Taylor"@en ;
+	dbo:artist	dbr:Cecil_Taylor ;
+	dbo:genre	dbr:Free_jazz .
+dbr:The_Jakal	rdf:type	dbo:Album ;
+	rdfs:label	"The Jakal"@en ;
+	dbo:artist	<http://dbpedia.org/resource/40_Glocc> ;
+	dbo:genre	dbr:West_Coast_hip_hop ,
+		dbr:Gangsta_rap .
+dbr:The_Woodstock_Experience	rdf:type	dbo:Album ;
+	rdfs:label	"The Woodstock Experience"@en ;
+	dbo:artist	dbr:Johnny_Winter ,
+		dbr:Janis_Joplin ;
+	dbo:genre	dbr:Psychedelic_rock ,
+		dbr:Blues_rock ,
+		dbr:Soul_music ,
+		dbr:Rock_music .
+dbr:Transcendental_Medication	rdf:type	dbo:Album ;
+	rdfs:label	"Transcendental Medication"@en ;
+	dbo:artist	dbr:Inger_Lorre ;
+	dbo:genre	dbr:Glam_punk ,
+		dbr:Alternative_rock .
+dbr:What_Will_We_Be	rdf:type	dbo:Album ;
+	rdfs:label	"What Will We Be"@en ;
+	dbo:artist	dbr:Devendra_Banhart ;
+	dbo:genre	dbr:Freak_folk .
+<http://dbpedia.org/resource/When_the_Devil\u0027s_Loose>	rdf:type	dbo:Album ;
+	rdfs:label	"When the Devil's Loose"@en ;
+	dbo:artist	<http://dbpedia.org/resource/A._A._Bondy> ;
+	dbo:genre	<http://dbpedia.org/resource/Americana_(music)> .
+<http://dbpedia.org/resource/Foster_Sylvers_(1973_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Foster Sylvers (1973 album)"@en ;
+	dbo:artist	dbr:Foster_Sylvers ;
+	dbo:genre	dbr:Soul_music .
+<http://dbpedia.org/resource/Circulus_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Circulus (album)"@en ;
+	dbo:artist	dbr:Chick_Corea ;
+	dbo:genre	dbr:Avant-garde_jazz .
+dbr:Feel_My_Pain	rdf:type	dbo:Album ;
+	rdfs:label	"Feel My Pain"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Paul_Di\u0027Anno> ;
+	dbo:genre	dbr:Heavy_metal_music .
+dbr:Life_Changing	rdf:type	dbo:Album ;
+	rdfs:label	"Life Changing"@en ;
+	dbo:artist	dbr:Smokie_Norful ;
+	dbo:genre	dbr:Gospel_music ,
+		dbr:Contemporary_Christian_music .
+dbr:Little_Barefoot_Soul	rdf:type	dbo:Album ;
+	rdfs:label	"Little Barefoot Soul"@en ;
+	dbo:artist	dbr:Bobby_Timmons ;
+	dbo:genre	dbr:Jazz .
+dbr:Live_Plus	rdf:type	dbo:Album ;
+	rdfs:label	"Live Plus"@en ;
+	dbo:artist	dbr:Miki_Howard ;
+	dbo:genre	dbr:Rhythm_and_blues ,
+		dbr:Jazz ,
+		dbr:Soul_music .
+dbr:Man_from_Two_Worlds	rdf:type	dbo:Album ;
+	rdfs:label	"Man from Two Worlds"@en ;
+	dbo:artist	dbr:Chico_Hamilton ;
+	dbo:genre	dbr:Jazz .
+dbr:More_Soul	rdf:type	dbo:Album ;
+	rdfs:label	"More Soul"@en ;
+	dbo:artist	dbr:Hank_Crawford ;
+	dbo:genre	dbr:Jazz .
+dbr:One_House_Left_Standing	rdf:type	dbo:Album ;
+	rdfs:label	"One House Left Standing"@en ;
+	dbo:artist	dbr:Claire_Hamill ;
+	dbo:genre	dbr:Folk_rock .
+<http://dbpedia.org/resource/One_Silent_Night..._Volume_1>	rdf:type	dbo:Album ;
+	rdfs:label	"One Silent Night... Volume 1"@en ;
+	dbo:artist	dbr:Neil_Zaza ;
+	dbo:genre	dbr:Rock_music ,
+		dbr:Pop_rock ,
+		dbr:Instrumental_rock .
+dbr:Portrait_of_Carrie_Lucas	rdf:type	dbo:Album ;
+	rdfs:label	"Portrait of Carrie Lucas"@en ;
+	dbo:artist	dbr:Carrie_Lucas ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Disco .
+<http://dbpedia.org/resource/Shriner\u0027s_Convention_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Shriner's Convention (album)"@en ;
+	dbo:artist	dbr:Ray_Stevens ;
+	dbo:genre	dbr:Country_music ,
+		dbr:Comedy_music ,
+		dbr:Pop_music .
+dbr:Simply_Carrie	rdf:type	dbo:Album ;
+	rdfs:label	"Simply Carrie"@en ;
+	dbo:artist	dbr:Carrie_Lucas ;
+	dbo:genre	dbr:Soul_music .
+dbr:Slave_Riot	rdf:type	dbo:Album ;
+	rdfs:label	"Slave Riot"@en ;
+	dbo:artist	dbr:Madlib ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Funktronica ,
+		dbr:Jazz_fusion .
+dbr:Songs_of_the_Season	rdf:type	dbo:Album ;
+	rdfs:label	"Songs of the Season"@en ;
+	dbo:artist	dbr:Randy_Travis ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/Still_in_Love_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Still in Love (album)"@en ;
+	dbo:artist	dbr:Carrie_Lucas ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Dance-pop .
+<http://dbpedia.org/resource/TM:103_Hustlerz_Ambition>	rdf:type	dbo:Album ;
+	rdfs:label	"TM:103 Hustlerz Ambition"@en ;
+	dbo:artist	dbr:Young_Jeezy ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:The_Space_Book	rdf:type	dbo:Album ;
+	rdfs:label	"The Space Book"@en ;
+	dbo:artist	dbr:Booker_Ervin ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/The_Very_Best_of_Emmylou_Harris:_Heartaches_&_Highways>	rdf:type	dbo:Album ;
+	rdfs:label	"The Very Best of Emmylou Harris: Heartaches & Highways"@en ;
+	dbo:artist	dbr:Emmylou_Harris ;
+	dbo:genre	dbr:Country_music .
+dbr:Timbetova_Zemlja	rdf:type	dbo:Album ;
+	rdfs:label	"Timbetova Zemlja"@en ;
+	dbo:artist	dbr:Timbe ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Welder_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Welder (album)"@en ;
+	dbo:artist	dbr:Elizabeth_Cook ;
+	dbo:genre	dbr:Country_music .
+<http://dbpedia.org/resource/You_Can\u0027t_Catch_Me_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"You Can't Catch Me (album)"@en ;
+	dbo:artist	dbr:Maaya_Sakamoto ;
+	dbo:genre	dbr:J-pop .
+dbr:Amon_Tobin	rdf:type	dbo:Artist ;
+	rdfs:label	"Amon Tobin"@en .
+dbr:Art_rock	rdf:type	dbo:Genre ;
+	rdfs:label	"Art rock"@en;
+				:worksFor <http://group10.com/ontology#shame_to_pride>.
+dbr:Bebop	rdf:type	dbo:Genre ;
+	rdfs:label	"Bebop"@en .
+dbr:Benny_Goodman	rdf:type	dbo:Artist ;
+	rdfs:label	"Benny Goodman"@en .
+dbr:Big_band	rdf:type	dbo:Genre ;
+	rdfs:label	"Big band"@en .
+dbr:Billie_Holiday	rdf:type	dbo:Artist ;
+	rdfs:label	"Billie Holiday"@en .
+dbr:Bluegrass_music	rdf:type	dbo:Genre ;
+	rdfs:label	"Bluegrass music"@en .
+dbr:Brian_Wilson	rdf:type	dbo:Artist ;
+	rdfs:label	"Brian Wilson"@en .
+dbr:Bruce_Springsteen	rdf:type	dbo:Artist ;
+	rdfs:label	"Bruce Springsteen"@en .
+dbr:Cat_Stevens	rdf:type	dbo:Artist ;
+	rdfs:label	"Cat Stevens"@en .
+dbr:Charlie_Parker	rdf:type	dbo:Artist ;
+	rdfs:label	"Charlie Parker"@en .
+dbr:Chayanne	rdf:type	dbo:Artist ;
+	rdfs:label	"Chayanne"@en .
+dbr:Chiptune	rdf:type	dbo:Genre ;
+	rdfs:label	"Chiptune"@en .
+dbr:Chuck_Berry	rdf:type	dbo:Artist ;
+	rdfs:label	"Chuck Berry"@en .
+dbr:Cliff_Richard	rdf:type	dbo:Artist ;
+	rdfs:label	"Cliff Richard"@en .
+dbr:Dannii_Minogue	rdf:type	dbo:Artist ;
+	rdfs:label	"Dannii Minogue"@en .
+dbr:David_Byrne	rdf:type	dbo:Artist ;
+	rdfs:label	"David Byrne"@en .
+dbr:Dizzy_Gillespie	rdf:type	dbo:Artist ;
+	rdfs:label	"Dizzy Gillespie"@en .
+dbr:Doo-wop	rdf:type	dbo:Genre ;
+	rdfs:label	"Doo-wop"@en .
+dbr:Elliott_Smith	rdf:type	dbo:Artist ;
+	rdfs:label	"Elliott Smith"@en .
+<http://dbpedia.org/resource/Fish_(singer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Fish (singer)"@en .
+dbr:Free_jazz	rdf:type	dbo:Genre ;
+	rdfs:label	"Free jazz"@en ;
+						:worksFor <http://group10.com/ontology#boredom_to_amusement>.
+dbr:George_Martin	rdf:type	dbo:Artist ;
+	rdfs:label	"George Martin"@en .
+dbr:George_Michael	rdf:type	dbo:Artist ;
+	rdfs:label	"George Michael"@en .
+dbr:Industrial_music	rdf:type	dbo:Genre ;
+	rdfs:label	"Industrial music"@en .
+dbr:Jerry_Garcia	rdf:type	dbo:Artist ;
+	rdfs:label	"Jerry Garcia"@en .
+dbr:Jerry_Lee_Lewis	rdf:type	dbo:Artist ;
+	rdfs:label	"Jerry Lee Lewis"@en .
+dbr:Joe_Cocker	rdf:type	dbo:Artist ;
+	rdfs:label	"Joe Cocker"@en .
+dbr:John_Denver	rdf:type	dbo:Artist ;
+	rdfs:label	"John Denver"@en .
+dbr:John_Entwistle	rdf:type	dbo:Artist ;
+	rdfs:label	"John Entwistle"@en .
+<http://dbpedia.org/resource/John_Paul_Jones_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"John Paul Jones (musician)"@en .
+dbr:John_Zorn	rdf:type	dbo:Artist ;
+	rdfs:label	"John Zorn"@en .
+dbr:Kim_Gordon	rdf:type	dbo:Artist ;
+	rdfs:label	"Kim Gordon"@en .
+dbr:Lou_Reed	rdf:type	dbo:Artist ;
+	rdfs:label	"Lou Reed"@en .
+dbr:Neil_Young	rdf:type	dbo:Artist ;
+	rdfs:label	"Neil Young"@en .
+dbr:Nick_Drake	rdf:type	dbo:Artist ;
+	rdfs:label	"Nick Drake"@en .
+dbr:Nico	rdf:type	dbo:Artist ;
+	rdfs:label	"Nico"@en .
+dbr:Nobuo_Uematsu	rdf:type	dbo:Artist ;
+	rdfs:label	"Nobuo Uematsu"@en .
+dbr:Noise_music	rdf:type	dbo:Genre ;
+	rdfs:label	"Noise music"@en .
+dbr:Olivia_Newton-John	rdf:type	dbo:Artist ;
+	rdfs:label	"Olivia Newton-John"@en .
+dbr:Paul_Simon	rdf:type	dbo:Artist ;
+	rdfs:label	"Paul Simon"@en .
+dbr:Peter_Gabriel	rdf:type	dbo:Artist ;
+	rdfs:label	"Peter Gabriel"@en .
+dbr:Phil_Keaggy	rdf:type	dbo:Artist ;
+	rdfs:label	"Phil Keaggy"@en .
+<http://dbpedia.org/resource/Prince_(musician)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Prince (musician)"@en .
+dbr:Progressive_metal	rdf:type	dbo:Genre ;
+	rdfs:label	"Progressive metal"@en .
+dbr:Progressive_rock	rdf:type	dbo:Genre ;
+	rdfs:label	"Progressive rock"@en .
+dbr:RuPaul	rdf:type	dbo:Artist ;
+	rdfs:label	"RuPaul"@en .
+dbr:Salsa_music	rdf:type	dbo:Genre ;
+	rdfs:label	"Salsa music"@en ;
+				:worksFor <http://group10.com/ontology#saddness_to_happiness>.
+dbr:Serge_Gainsbourg	rdf:type	dbo:Artist ;
+	rdfs:label	"Serge Gainsbourg"@en .
+dbr:Soul_music	rdf:type	dbo:Genre ;
+	rdfs:label	"Soul music"@en ;
+				:worksFor <http://group10.com/ontology#jealousy_to_interest>.
+dbr:Sun_Ra	rdf:type	dbo:Artist ;
+	rdfs:label	"Sun Ra"@en .
+<http://dbpedia.org/resource/The_Velvet_Underground_&_Nico>	rdf:type	dbo:Album ;
+	rdfs:label	"The Velvet Underground & Nico"@en ;
+	dbo:artist	dbr:Nico ;
+	dbo:genre	dbr:Protopunk ,
+		dbr:Psychedelic_rock ,
+		dbr:Art_rock .
+dbr:Thurston_Moore	rdf:type	dbo:Artist ;
+	rdfs:label	"Thurston Moore"@en .
+<http://dbpedia.org/resource/Tony_Williams_(drummer)>	rdf:type	dbo:Artist ;
+	rdfs:label	"Tony Williams (drummer)"@en .
+dbr:Tracey_Ullman	rdf:type	dbo:Artist ;
+	rdfs:label	"Tracey Ullman"@en .
+dbr:Van_Morrison	rdf:type	dbo:Artist ;
+	rdfs:label	"Van Morrison"@en .
+dbr:Brian_Wilson_Presents_Smile	rdf:type	dbo:Album ;
+	rdfs:label	"Brian Wilson Presents Smile"@en ;
+	dbo:artist	dbr:Brian_Wilson ;
+	dbo:genre	dbr:Psychedelic_pop .
+dbr:Cecil_Taylor	rdf:type	dbo:Artist ;
+	rdfs:label	"Cecil Taylor"@en .
+dbr:Fado	rdf:type	dbo:Genre ;
+	rdfs:label	"Fado"@en .
+dbr:Little_Richard	rdf:type	dbo:Artist ;
+	rdfs:label	"Little Richard"@en .
+dbr:Sarah_Vaughan	rdf:type	dbo:Artist ;
+	rdfs:label	"Sarah Vaughan"@en .
+dbr:Shoegazing	rdf:type	dbo:Genre ;
+	rdfs:label	"Shoegazing"@en .
+dbr:The_Marshall_Mathers_LP	rdf:type	dbo:Album ;
+	rdfs:label	"The Marshall Mathers LP"@en ;
+	dbo:artist	dbr:Eminem ;
+	dbo:genre	dbr:Hardcore_hip_hop .
+dbr:The_Slim_Shady_LP	rdf:type	dbo:Album ;
+	rdfs:label	"The Slim Shady LP"@en ;
+	dbo:artist	dbr:Eminem ;
+	dbo:genre	dbr:Horrorcore ,
+		dbr:Hip_hop_music .
+dbr:Tommy_Dorsey	rdf:type	dbo:Artist ;
+	rdfs:label	"Tommy Dorsey"@en .
+dbr:Art_Farmer	rdf:type	dbo:Artist ;
+	rdfs:label	"Art Farmer"@en .
+<http://dbpedia.org/resource/England,_Half-English>	rdf:type	dbo:Album ;
+	rdfs:label	"England, Half-English"@en ;
+	dbo:artist	dbr:Billy_Bragg ;
+	dbo:genre	dbr:Rock_music .
+dbr:Ernest_Tubb	rdf:type	dbo:Artist ;
+	rdfs:label	"Ernest Tubb"@en .
+dbr:Freddie_Hubbard	rdf:type	dbo:Artist ;
+	rdfs:label	"Freddie Hubbard"@en .
+<http://dbpedia.org/resource/Graceland_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Graceland (album)"@en ;
+	dbo:artist	dbr:Paul_Simon ;
+	dbo:genre	dbr:Worldbeat ,
+		dbr:Rock_music ,
+		dbr:Pop_music .
+dbr:Latin_jazz	rdf:type	dbo:Genre ;
+	rdfs:label	"Latin jazz"@en .
+dbr:Lucky_Leif_and_the_Longships	rdf:type	dbo:Album ;
+	rdfs:label	"Lucky Leif and the Longships"@en ;
+	dbo:artist	dbr:Robert_Calvert ;
+	dbo:genre	dbr:Rock_music .
+dbr:Pat_Metheny	rdf:type	dbo:Artist ;
+	rdfs:label	"Pat Metheny"@en .
+dbr:Gary_Peacock	rdf:type	dbo:Artist ;
+	rdfs:label	"Gary Peacock"@en .
+dbr:Keith_Whitley	rdf:type	dbo:Artist ;
+	rdfs:label	"Keith Whitley"@en .
+dbr:Harold_Budd	rdf:type	dbo:Artist ;
+	rdfs:label	"Harold Budd"@en .
+dbr:Marinella	rdf:type	dbo:Artist ;
+	rdfs:label	"Marinella"@en .
+dbr:Call_Off_the_Search	rdf:type	dbo:Album ;
+	rdfs:label	"Call Off the Search"@en ;
+	dbo:artist	dbr:Katie_Melua ;
+	dbo:genre	dbr:Jazz ,
+		dbr:Blues .
+dbr:Jimmy_Heath	rdf:type	dbo:Artist ;
+	rdfs:label	"Jimmy Heath"@en .
+dbr:Kenny_Burrell	rdf:type	dbo:Artist ;
+	rdfs:label	"Kenny Burrell"@en .
+<http://dbpedia.org/resource/Radio_K.A.O.S.>	rdf:type	dbo:Album ;
+	rdfs:label	"Radio K.A.O.S."@en ;
+	dbo:artist	dbr:Roger_Waters ;
+	dbo:genre	dbr:Progressive_rock .
+dbr:Night_Ride_Home	rdf:type	dbo:Album ;
+	rdfs:label	"Night Ride Home"@en ;
+	dbo:artist	dbr:Joni_Mitchell ;
+	dbo:genre	dbr:Folk_jazz ,
+		dbr:Alternative_rock .
+dbr:Short_Sharp_Shocked	rdf:type	dbo:Album ;
+	rdfs:label	"Short Sharp Shocked"@en ;
+	dbo:artist	dbr:Michelle_Shocked ;
+	dbo:genre	dbr:Rock_music .
+dbr:Akhenaten_Suite	rdf:type	dbo:Album ;
+	rdfs:label	"Akhenaten Suite"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Roy_Campbell,_Jr.> ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Baby,_Baby,_Baby>	rdf:type	dbo:Album ;
+	rdfs:label	"Baby, Baby, Baby"@en ;
+	dbo:artist	dbr:Jimmy_Witherspoon ;
+	dbo:genre	dbr:Blues .
+dbr:Brutal_Romantic	rdf:type	dbo:Album ;
+	rdfs:label	"Brutal Romantic"@en ;
+	dbo:artist	dbr:Brooke_Fraser ;
+	dbo:genre	dbr:Pop_music .
+dbr:Chet_Baker_Big_Band	rdf:type	dbo:Album ;
+	rdfs:label	"Chet Baker Big Band"@en ;
+	dbo:artist	dbr:Chet_Baker ;
+	dbo:genre	dbr:Jazz .
+dbr:Dark_Candy	rdf:type	dbo:Album ;
+	rdfs:label	"Dark Candy"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Chara_(singer)> ;
+	dbo:genre	dbr:Pop_music ,
+		dbr:Ambient_music ,
+		dbr:Rhythm_and_blues ,
+		dbr:Rock_music ,
+		dbr:Electronica ,
+		dbr:Reggae .
+dbr:Del_Otro_Lado_del_Puente	rdf:type	dbo:Album ;
+	rdfs:label	"Del Otro Lado del Puente"@en ;
+	dbo:artist	dbr:Juan_Gabriel ;
+	dbo:genre	dbr:Latin_American_music .
+<http://dbpedia.org/resource/Doyle_Bramhall_II_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Doyle Bramhall II (album)"@en ;
+	dbo:artist	dbr:Doyle_Bramhall_II ;
+	dbo:genre	dbr:Blues ,
+		dbr:Rock_music .
+dbr:Futuristic_Mob	rdf:type	dbo:Album ;
+	rdfs:label	"Futuristic Mob"@en ;
+	dbo:artist	dbr:The_Jacka ;
+	dbo:genre	dbr:Hip_hop_music .
+<http://dbpedia.org/resource/Home_(Carrie_Akre_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Home (Carrie Akre album)"@en ;
+	dbo:artist	dbr:Carrie_Akre ;
+	dbo:genre	dbr:Alternative_rock .
+dbr:Hymns_for_the_Haunted	rdf:type	dbo:Album ;
+	rdfs:label	"Hymns for the Haunted"@en ;
+	dbo:artist	dbr:Amanda_Jenssen ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Pop_music ,
+		dbr:Rock_music .
+dbr:Impermanent_Resonance	rdf:type	dbo:Album ;
+	rdfs:label	"Impermanent Resonance"@en ;
+	dbo:artist	dbr:James_LaBrie ;
+	dbo:genre	dbr:Progressive_metal .
+<http://dbpedia.org/resource/Inc._1>	rdf:type	dbo:Album ;
+	rdfs:label	"Inc. 1"@en ;
+	dbo:artist	<http://dbpedia.org/resource/John_Hicks_(jazz_pianist)> ;
+	dbo:genre	dbr:Jazz .
+dbr:Julia_with_Blue_Jeans_On	rdf:type	dbo:Album ;
+	rdfs:label	"Julia with Blue Jeans On"@en ;
+	dbo:artist	dbr:Spencer_Krug ;
+	dbo:genre	dbr:Indie_rock .
+dbr:Love_What_Happened_Here	rdf:type	dbo:Album ;
+	rdfs:label	"Love What Happened Here"@en ;
+	dbo:artist	<http://dbpedia.org/resource/James_Blake_(musician)> ;
+	dbo:genre	dbr:Dubstep .
+<http://dbpedia.org/resource/Love_Zone_(Ullanda_McCullough_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Love Zone (Ullanda McCullough album)"@en ;
+	dbo:artist	dbr:Ullanda_McCullough ;
+	dbo:genre	dbr:Soul_music ,
+		dbr:Rhythm_and_blues .
+<http://dbpedia.org/resource/Marcia_Griffiths_&_Friends>	rdf:type	dbo:Album ;
+	rdfs:label	"Marcia Griffiths & Friends"@en ;
+	dbo:artist	dbr:Marcia_Griffiths ;
+	dbo:genre	dbr:Reggae .
+<http://dbpedia.org/resource/Million_Dollar_Arm_(soundtrack)>	rdf:type	dbo:Album ;
+	rdfs:label	"Million Dollar Arm (soundtrack)"@en ;
+	dbo:artist	<http://dbpedia.org/resource/A._R._Rahman> ;
+	dbo:genre	dbr:World_music .
+<http://dbpedia.org/resource/NRG_Ensemble_(album)>	rdf:type	dbo:Album ;
+	rdfs:label	"NRG Ensemble (album)"@en ;
+	dbo:artist	dbr:Hal_Russell ;
+	dbo:genre	dbr:Jazz .
+<http://dbpedia.org/resource/Oh_Hell_No!>	rdf:type	dbo:Album ;
+	rdfs:label	"Oh Hell No!"@en ;
+	dbo:artist	<http://dbpedia.org/resource/R.O.C._(rapper)> ;
+	dbo:genre	dbr:Gangsta_rap ,
+		dbr:Horrorcore ,
+		dbr:Hardcore_hip_hop .
+<http://dbpedia.org/resource/Portrait_Edition_(Jo_Stafford_album)>	rdf:type	dbo:Album ;
+	rdfs:label	"Portrait Edition (Jo Stafford album)"@en ;
+	dbo:artist	dbr:Jo_Stafford ;
+	dbo:genre	dbr:Traditional_pop_music .
+dbr:RetroHash	rdf:type	dbo:Album ;
+	rdfs:label	"RetroHash"@en ;
+	dbo:artist	dbr:Asher_Roth ;
+	dbo:genre	dbr:Hip_hop_music .
+dbr:Saudade_LP	rdf:type	dbo:Album ;
+	rdfs:label	"Saudade LP"@en ;
+	dbo:artist	<http://dbpedia.org/resource/Mr._J._Medeiros> ;
+	dbo:genre	dbr:Underground_hip_hop .
